@@ -17,3 +17,7 @@ Also, here we use some basic encryption with encrypting all messsages using a si
 
 (note, i know NOTHING about cryptology, feel free to open a pull request in case you know how to make it better)
 
+
+
+
+![wow](https://media.discordapp.net/attachments/1065674628636344420/1123644736922734632/makesweet-3nxz9e.gif?width=440&height=330)
