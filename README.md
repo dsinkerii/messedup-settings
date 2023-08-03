@@ -2,7 +2,7 @@
 https://youtu.be/qbOCx4pdUnQ
 
 
-# UPDATE: The main backend code is mostly done, currently making the code for "actors", please wait.
+# UPDATE 2: All of the code is done, i may update it later, but right now im having issues building this project due to dependencies issues. In case i wont be able to release a mod by today, i will release the source code either in case someone will be able to build it themselfs, or point out an issue
 
 # how does it work
 ![what](https://github.com/dsinkerii/messedup-settings/assets/104655906/626da6e5-8ea3-47a4-ba86-8cf079f68bc8)
