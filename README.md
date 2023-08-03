@@ -15,6 +15,7 @@ pip install paho.mqtt Crypto pillow dearpygui
 cd {REPLACE HERE THE PATH TO THE FOLDER}
 ```
 (make sure to actually replace the path to the folder.)
+
 5. run:
 ```bash
 python host.py
