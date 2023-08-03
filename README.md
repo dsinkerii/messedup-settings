@@ -1,8 +1,33 @@
 # messedup-settings
 https://youtu.be/qbOCx4pdUnQ
 
+# ‼️ READ BEFORE INSTALLING ‼️
 
-# UPDATE 2: All of the code is done, i may update it later, but right now im having issues building this project due to dependencies issues. In case i wont be able to release a mod by today, i will release the source code either in case someone will be able to build it themselfs, or point out an issue
+🔴 IF you are the one who is going to edit the settings, make sure to follow these steps:
+1. make sure you have python installed, its a very important step.
+2. run in your console this command
+```bash
+pip install paho.mqtt Crypto pillow dearpygui
+```
+3. then, after installing it, install the `actor.zip`, this contains all required files for the script.
+4. go to the unzipped folder in your console by running
+```bash
+cd {REPLACE HERE THE PATH TO THE FOLDER}
+```
+(make sure to actually replace the path to the folder.)
+5. run:
+```bash
+python host.py
+```
+6. if everything before was done correctly, a window should pop out. Make sure to enter the secret key given by the mod.
+
+🔴 IF you are the one running the mod, allowing to change your settings, follow these steps:
+1. make sure you have 1.20 fabric installed.
+2. After launching the mod, go to the .minecraft folder, look for the `password.txt` file. There will be a bunch of numbers and letters, `its your secret key.`
+3. this key allows anyone to edit your settings, so be careful on who you give this secret key to.
+4. PS. your old `options.txt` file wont be recovered once you close minecraft, make sure to make a copy of it if you plan on playing with it with someone.
+
+# UPDATE 3: After a hella lot of time, it works! so happy.
 
 # how does it work
 ![what](https://github.com/dsinkerii/messedup-settings/assets/104655906/626da6e5-8ea3-47a4-ba86-8cf079f68bc8)
