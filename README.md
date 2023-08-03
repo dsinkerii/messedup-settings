@@ -2,7 +2,7 @@
 https://youtu.be/qbOCx4pdUnQ
 
 
-# currently coding, please wait for the release.
+# UPDATE: The main backend code is mostly done, currently making the code for "actors", please wait.
 
 # how does it work
 ![what](https://github.com/dsinkerii/messedup-settings/assets/104655906/626da6e5-8ea3-47a4-ba86-8cf079f68bc8)
