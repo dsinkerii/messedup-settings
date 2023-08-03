@@ -27,6 +27,9 @@ python host.py
 2. After launching the mod, go to the .minecraft folder, look for the `password.txt` file. There will be a bunch of numbers and letters, `its your secret key.`
 3. this key allows anyone to edit your settings, so be careful on who you give this secret key to.
 4. PS. your old `options.txt` file wont be recovered once you close minecraft, make sure to make a copy of it if you plan on playing with it with someone.
+   
+### (for best experience, install https://git.frohnmeyer-wds.de/JfMods/Slyde to remove limit from options, allows to set any value more or less than intended)
+
 
 # UPDATE 4: if you know how to compile a script and you use windows (because i am a linux user) feel free to open a pull request with the compiled script in a zip file so i can add it as a .exe file. (i dont want to ask my friends who dont know python at all explain to do this every update)
 
