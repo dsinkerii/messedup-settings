@@ -28,7 +28,7 @@ python host.py
 3. this key allows anyone to edit your settings, so be careful on who you give this secret key to.
 4. PS. your old `options.txt` file wont be recovered once you close minecraft, make sure to make a copy of it if you plan on playing with it with someone.
 
-# UPDATE 3: After a hella lot of time, it works! so happy.
+# UPDATE 4: if you know how to compile a script and you use windows (because i am a linux user) feel free to open a pull request with the compiled script in a zip file so i can add it as a .exe file. (i dont want to ask my friends who dont know python at all explain to do this every update)
 
 # how does it work
 ![what](https://github.com/dsinkerii/messedup-settings/assets/104655906/626da6e5-8ea3-47a4-ba86-8cf079f68bc8)
