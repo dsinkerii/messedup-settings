@@ -33,6 +33,9 @@ python host.py
 If you have any issues with this mod or following any of the steps, feel free to open an issue.
 (in case its an emergency (something like a security exploit) feel free to DM me in discord: @dsinkerii (dm's always open))
 
+if you like this mod please hit that funny star button, i really appreciate that 
+![](https://media.discordapp.net/attachments/1134600951999778940/1137065459196383403/image.png?width=20&height=20)
+
 # UPDATE 4: if you know how to compile a script and you use windows (because i am a linux user) feel free to open a pull request with the compiled script in a zip file so i can add it as a .exe file. (i dont want to ask my friends who dont know python at all explain to do this every update)
 
 # how does it work
