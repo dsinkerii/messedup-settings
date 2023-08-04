@@ -31,7 +31,7 @@ python host.py
 4. PS. your old `options.txt` file wont be recovered once you close minecraft, make sure to make a copy of it if you plan on playing with it with someone.
 
 If you have any issues with this mod or following any of the steps, feel free to open an issue.
-(in case its an emergency (something like a security exploit) feel free to DM me in discord: @dsinkerii)
+(in case its an emergency (something like a security exploit) feel free to DM me in discord: @dsinkerii (dm's always open))
 
 # UPDATE 4: if you know how to compile a script and you use windows (because i am a linux user) feel free to open a pull request with the compiled script in a zip file so i can add it as a .exe file. (i dont want to ask my friends who dont know python at all explain to do this every update)
 
