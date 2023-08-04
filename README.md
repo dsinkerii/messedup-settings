@@ -9,7 +9,7 @@ https://youtu.be/qbOCx4pdUnQ
 1. make sure you have python installed, its a very important step.
 2. run in your console this command
 ```bash
-py -m pip install paho.mqtt Crypto pillow dearpygui 
+python -m pip install paho.mqtt Crypto pillow dearpygui 
 ```
 3. then, after installing it, install the `actor.zip`, this contains all required files for the script.
 4. go to the unzipped folder in your console by running
