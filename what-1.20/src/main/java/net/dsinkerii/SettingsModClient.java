@@ -77,7 +77,7 @@ public class SettingsModClient implements ClientModInitializer {
                         options.setUserName(publisherId);
                         options.setPassword(passwordId.toCharArray());
                         options.setConnectionTimeout(10);
-                        String Topic = "1.20 settingsmodv0.1";
+                        String Topic = "1.20settingsmodv0.1";
                         sampleClient.setCallback(new MqttCallback() {
                             public void connectionLost(Throwable cause) {
                                 System.out.println("connectionLost: " + cause.getMessage() + cause.getCause());
@@ -86,9 +86,12 @@ public class SettingsModClient implements ClientModInitializer {
                         
                             public void messageArrived(String topic, MqttMessage message) {
                                 String decrypted = "";
+                                System.out.println("Raw message: " + message.toString());
                                 try{
-                                    decrypted = decrypt(new String(message.getPayload()), Password);
-                                }catch(Exception e) {}
+                                    decrypted = decrypt(new String(message.toString()), Password);
+                                }catch(Exception e) {
+                                    System.out.println("Unable to decrypt, is someone else playing rn?");
+                                }
                                 System.out.println(new String(decrypted).length());
                                 if(!Text2.contains(new String(decrypted).split(":")[0]) && new String(decrypted).length() != 0){
                                     Text2 += "\n§6>:§f " + decrypted + "\n";
@@ -97,7 +100,7 @@ public class SettingsModClient implements ClientModInitializer {
                                         System.out.println(new String(decrypted).split(":")[0] + Text2.split(new String(decrypted).split(":")[0])[1].split("\n")[0]);
                                         System.out.println(new String(decrypted));
                                         System.out.println(Text2.replace(new String(decrypted).split(":")[0] + Text2.split(new String(decrypted).split(":")[0])[1].split("\n")[0], new String(decrypted)));
-                                                   Text2 = Text2.replace(new String(decrypted).split(":")[0] + Text2.split(new String(decrypted).split(":")[0])[1].split("\n")[0], new String(decrypted));
+                                        Text2 = Text2.replace(new String(decrypted).split(":")[0] + Text2.split(new String(decrypted).split(":")[0])[1].split("\n")[0], new String(decrypted));
                                     }
                                     //Text2 = Text2.replace(new String(decrypted).split(":")[0] + ":" + Text2.split(new String(decrypted).split(":")[0])[1].split("\n")[0], new String(decrypted).split(":")[0] + ":" + new String(decrypted).split(":")[1]);
                                 }
@@ -134,7 +137,8 @@ public class SettingsModClient implements ClientModInitializer {
                         System.out.println("contnected to MQTT...");
                     }catch(MqttException me) {
                         System.out.println("not contnected to MQTT...");
-                        Text2 = "Not connected to MQTT...";
+                        System.out.println(me);
+                        Text2 = "Not connected to MQTT... Error message: " + me;
                     }
                     String Topic = "SettingsMod 1.20";
                     //IMqttClient publisher = new MqttClient("tcp://iot.eclipse.org:1883",publisherId);

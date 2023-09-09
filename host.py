@@ -10,7 +10,7 @@ import math
 
 broker = 'broker.emqx.io'
 port = 1883
-topic = "1.20 settingsmodv0.1"
+topic = "1.20settingsmodv0.1"
 # generate client ID with pub prefix randomly
 client_id = f'python-mqtt-{random.randint(0, 1000)}'
 username = 'Actor'+str(random.randint(0, 100000))
@@ -52,22 +52,15 @@ def encrypt(plain_text):
     cipher_text = cipher.encrypt(pad(plain_text.encode(), AES.block_size))
     return base64.b64encode(cipher_text).decode()
 
-def connect_mqtt():
-    def on_connect(client, userdata, flags, rc):
-        if rc == 0:
-            pass
-        else:
-            print("Failed to connect, return code %d\n", rc)
-
-#config the client
-    client = mqtt_client.Client(client_id)
-    client.username_pw_set(username, password)
-    client.on_connect = on_connect
-    client.connect(broker, port)
-    return client
-
+def on_connect(client, userdata, flags, rc):
+    if rc == 0:
+        pass
+    else:
+        print("Failed to connect, return code %d\n", rc)
 #connect to mqtt
-client = connect_mqtt()
+client = mqtt_client.Client(client_id)
+client.on_connect = on_connect
+client.connect(broker, port)
 client.loop_start()
 
 #LEFTOVER CODE.
@@ -78,49 +71,71 @@ client.loop_start()
 
     #result = client.publish(topic, encMessage)
 def push_settings(sender, app_data, user_data):
+    print("attempting to send \"" + str(user_data) + "\"...", end="")
     if(user_data[0] == "fov"):
         encMessage = encrypt(f"fov:{(dpg.get_value(sender) - 70)/40}")
         result = client.publish(topic, encMessage)
+        print(result)
     elif(user_data[0] == "mouseSensitivity"):
         encMessage = encrypt(f"mouseSensitivity:{dpg.get_value(sender)/200}")
         result = client.publish(topic, encMessage)
+        print(result)
     elif(user_data[0] == "autoJump"):
         user_data[1] = not user_data[1]
         dpg.configure_item(sender, label=f"Auto Jump ({user_data[1]})")
         encMessage = encrypt(f"autoJump:{user_data[1]}")
         result = client.publish(topic, encMessage)
+        print(result)
     elif(user_data[0] == "invertYMouse"):
         user_data[1] = not user_data[1]
         dpg.configure_item(sender, label=f"Invert Mouse ({user_data[1]})")
         encMessage = encrypt(f"invertYMouse:{user_data[1]}")
         result = client.publish(topic, encMessage)
+        print(result)
     elif(user_data[0] == "soundCategory_master"):
         encMessage = encrypt(f"soundCategory_master:{dpg.get_value(sender)/100}")
         result = client.publish(topic, encMessage)
+        print(result)
     elif(user_data[0] == "maxFps"):
         encMessage = encrypt(f"maxFps:{dpg.get_value(sender)}")
         result = client.publish(topic, encMessage)
+        print(result)
     elif(user_data[0] == "renderDistance"):
         encMessage = encrypt(f"renderDistance:{dpg.get_value(sender)}")
         result = client.publish(topic, encMessage)
+        print(result)
     elif(user_data[0] == "gamma"):
         encMessage = encrypt(f"gamma:{dpg.get_value(sender)/100.0}")
         result = client.publish(topic, encMessage)
+        print(result)
     elif(user_data[0] == "fovEffectScale"):
         encMessage = encrypt(f"fovEffectScale:{dpg.get_value(sender)/100.0}")
         result = client.publish(topic, encMessage)
+        print(result)
     elif(user_data[0] == "damageTiltStrength"):
         encMessage = encrypt(f"damageTiltStrength:{dpg.get_value(sender)/100.0}")
         result = client.publish(topic, encMessage)
+        print(result)
     elif(user_data[0] == "entityDistanceScaling"):
         encMessage = encrypt(f"entityDistanceScaling:{dpg.get_value(sender)/100.0}")
         result = client.publish(topic, encMessage)
+        print(result)
     elif(user_data[0] == "chatScale"):
         encMessage = encrypt(f"chatScale:{dpg.get_value(sender)/100.0}")
         result = client.publish(topic, encMessage)
+        print(result)
     elif(user_data[0] == "key_key"):
         encMessage = encrypt(f"key_key.{user_data[1]}:{dpg.get_value(sender)}")
         result = client.publish(topic, encMessage)
+        print(result)
+    elif(user_data[0] == "lang"):
+        encMessage = encrypt(f"lang:{dpg.get_value(sender).split(' ')[0]}")
+        result = client.publish(topic, encMessage)
+        print(result)
+    elif(user_data[0] == "guiScale"):
+        encMessage = encrypt(f"guiScale:{dpg.get_value(sender)}")
+        result = client.publish(topic, encMessage)
+        print(result)
 
 with dpg.window(label='SettingsMenu',tag="window") as window:
     dpg.add_text("            Welcome to messed up settings mod menu (rewrite)\n", tag="title")
@@ -156,6 +171,32 @@ with dpg.window(label='SettingsMenu',tag="window") as window:
         dpg.add_combo(label="Rebind inventory",width=300,tag="inventory",items=keybings,callback=push_settings,user_data=["key_key","inventory"])
         dpg.add_combo(label="Rebind chat",width=300,tag="chat",items=keybings,callback=push_settings,user_data=["key_key","chat"])
         dpg.add_combo(label="Rebind swapOffhand",width=300,tag="swapOffhand",items=keybings,callback=push_settings,user_data=["key_key","chaswapOffhandt"])
+        lang = ("af_za (Afrikaans)","ar_sa (Arabic)", "ast_es (Asturian)", "az_az (Azerbaijani)",
+        "ba_ru (Bashkir)", "bar (Bavarian)", "be_by (Belarusian)", "bg_bg (Bulgarian)", "br_fr (Breton)", "brb (Brabantian)",
+        "bs_ba (Bosnian)", "ca_es (Catalan)", "cs_cz (Czech)","cy_gb (Welsh)", "da_dk (Danish)", "de_at (Austrian German)", 
+        "de_ch (Swiss German)", "de_de (German)", "el_gr (Greek)", "en_au (Australian English)", "en_ca (Canadian English)",
+        "en_gb (Bri'ish English)", "en_nz (New Zealand English)", "en_pt (Ahoy english)", "en_ud (True australian english)",
+        "en_us (American English)", "enp (Modern English minus borrowed words)", "enws (Early Modern English)", "eo_uy (Esperanto)",
+        "es_ar (Argentinian Spanish)", "es_cl (Chilean Spanish)", "es_ec (Ecuadorian Spanish)", "es_es (European Spanish)",
+        "es_mx (Mexican Spanish)", "es_uy (Uruguayan Spanish)", "es_ve (Venezuelan Spanish)", "esan (Andalusian)",
+        "et_ee (Estonian)", "eu_es (Basque)", "fa_ir (Persian)", "fi_fi (Finnish)", "fil_ph (Filipino)", "fo_fo (Faroese)",
+        "fr_ca (Canadian French)", "fr_fr (AAA its french)", "fra_de (Franconian)", "fur_it (Friulian)", "fy_nl (Frisian)",
+        "ga_ie (Irish)", "gd_gb (SCOTLAND FOREVER)", "gl_es (Galician)", "haw_us (Hawaiian)", "he_il (Hebrew)",
+        "hi_in (Hindi)", "hr_hr (Croatian)", "hu_hu (Hungarian)", "hy_am (Armenian)", "id_id (Indonesian)", "ig_ng (Igbo)",
+        "ig_ng (Igbo)", "io_en (Ido)", "is_is (Icelandic)", "isv (Interslavic)", "it_it (Italian)", "ja_jp (japanese)",
+        "jbo_en (Lojban)", "ka_ge (Georgian)", "kk_kz (Kazakh)", "kn_in (Kannada)", "ko_kr (Korean)", "ksh (Kölsch/Ripuarian)",
+        "kw_gb (Cornish)", "la_la (Latin)", "lb_lu (Luxembourgish)", "li_li (Limburgish)", "lmo (Lombard)", "lol_us (yahiacord language (lolcat))",
+        "lt_lt (Lithuanian)", "lv_lv (Latvian)", "lzh (Classical Chinese)", "mk_mk (Macedonian)", "mn_mn (Mongolian)", "ms_my (Malay)",
+        "mt_mt (Maltese)", "nah (Nahuatl)", "nds_de (Low German)", "nl_be (Dutch, Flemish)", "nl_nl (Dutch)", "nn_no (Norwegian Nynorsk)",
+        "no_no‌ (Norwegian Bokmål)", "oc_fr (Occitan)", "ovd (Elfdalian)", "pl_pl (polish (oh wow))", "pt_br (Brazilian Portuguese)", "pt_pt (European Portuguese)",
+        "qya_aa (Quenya (Form of Elvish from LOTR))", "ro_ro (Romanian)", "rpr (Russian (Pre-revolutionary))", "ru_ru (ok)",
+        "ry_ua (Rusyn)", "se_no (Northern Sami)", "sk_sk (Slovak)", "sl_si (Slovenian)", "so_so (Somali)", "sq_al (Albanian)",
+        "sr_sp (Serbian (Cyrillic))", "sv_se (Swedish)", "sxu (Upper Saxon German)", "szl (Silesian)", "ta_in (Tamil)", "th_th (Thai)", "tl_ph (Tagalog)",
+        "tlh_aa (Klingon)", "tok (tik (Toki Pona))", "tr_tr (Turkish)", "tt_ru (Tatar)", "uk_ua (Ukrainian (hell yea))", "val_es (Valencian)",
+        "vec_it (Venetian)", "vi_vn (Vietnamese)", "yi_de (Yiddish)", "yo_ng (Yoruba)", "zh_cn (Simplified (China; Mandarin))", "zh_hk (Chinese Traditional (Hong Kong; Mix))",
+        "zh_tw (Chinese Traditional (Taiwan; Mandarin))", "zlm_arab (Malay (Jawi))")# impossible challenge: try to find the 1 missing language here :)
+        dpg.add_combo(label="Switch language",width=300,tag="language",items=lang,callback=push_settings,user_data=["lang"])
+        dpg.add_input_int(label='Set gui scale', width=300,default_value=2,tag="guiScale",callback=push_settings,user_data=["guiScale"])
     dpg.bind_item_font("title2",font2)
 dpg.set_primary_window("window",True)
 
