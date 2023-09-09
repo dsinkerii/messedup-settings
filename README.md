@@ -1,13 +1,15 @@
 # messedup-settings
 https://youtu.be/qbOCx4pdUnQ
 
+### (for best experience, install https://git.frohnmeyer-wds.de/JfMods/Slyde to remove limit from options, allows to set any value more or less than intended)
+
 # ‼️ READ BEFORE INSTALLING ‼️
 
 🔴 IF you are the one who is going to edit the settings, make sure to follow these steps:
 1. make sure you have python installed, its a very important step.
 2. run in your console this command
 ```bash
-pip install paho.mqtt Crypto pillow dearpygui
+python -m pip install paho.mqtt pycryptodome pillow dearpygui 
 ```
 3. then, after installing it, install the `actor.zip`, this contains all required files for the script.
 4. go to the unzipped folder in your console by running
@@ -28,7 +30,13 @@ python host.py
 3. this key allows anyone to edit your settings, so be careful on who you give this secret key to.
 4. PS. your old `options.txt` file wont be recovered once you close minecraft, make sure to make a copy of it if you plan on playing with it with someone.
 
-# UPDATE 3: After a hella lot of time, it works! so happy.
+If you have any issues with this mod or following any of the steps, feel free to open an issue.
+(in case its an emergency (something like a security exploit) feel free to DM me in discord: @dsinkerii (dm's always open))
+
+⭐ if you like this mod please hit that funny star button, i really appreciate that 
+![](https://media.discordapp.net/attachments/1134600951999778940/1137065459196383403/image.png?width=20&height=20)
+
+# UPDATE 4: if you know how to compile a script and you use windows (because i am a linux user) feel free to open a pull request with the compiled script in a zip file so i can add it as a .exe file. (i dont want to ask my friends who dont know python at all explain to do this every update)
 
 # how does it work
 ![what](https://github.com/dsinkerii/messedup-settings/assets/104655906/626da6e5-8ea3-47a4-ba86-8cf079f68bc8)
