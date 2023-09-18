@@ -11,7 +11,7 @@ https://youtu.be/qbOCx4pdUnQ
 ```bash
 python -m pip install paho.mqtt pycryptodome pillow dearpygui 
 ```
-3. then, after installing it, install the `actor.zip`, this contains all required files for the script.
+3. then, after installing it, install the `host.zip (or actor.zip in older versions)`, this contains all required files for the script.
 4. go to the unzipped folder in your console by running
 ```bash
 cd {REPLACE HERE THE PATH TO THE FOLDER}
