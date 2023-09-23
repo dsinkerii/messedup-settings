@@ -3,6 +3,8 @@ https://youtu.be/qbOCx4pdUnQ
 
 ### (for best experience, install https://git.frohnmeyer-wds.de/JfMods/Slyde to remove limit from options, allows to set any value more or less than intended)
 
+## if you have any issues, open an issue here if you have a github account, or dm me at `@dsinkerii` on discord (but make sure you ping me on discord or smth if you cant use both methods)
+
 # ‼️ READ BEFORE INSTALLING ‼️
 
 🔴 IF you are the one who is going to edit the settings, make sure to follow these steps:
