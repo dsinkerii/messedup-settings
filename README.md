@@ -7,7 +7,7 @@ https://youtu.be/qbOCx4pdUnQ
   
   ❓ if you have any issues, open an issue here if you have a github account, or dm me at `@dsinkerii` on discord (but make sure you ping me on discord or smth if you cant use both methods)
   
-  :trollface: also pehkui support on 10 stars lol
+  :trollface: also pehkui support on 10 stars lol (UPD: damn this was fast lol, wip)
 
 
 # ‼️ READ BEFORE INSTALLING ‼️
