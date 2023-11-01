@@ -77,11 +77,11 @@ public class SettingsModClient implements ClientModInitializer {
                         options.setUserName(publisherId);
                         options.setPassword(passwordId.toCharArray());
                         options.setConnectionTimeout(10);
-                        String Topic = "1.20settingsmodv0.1";
+                        String Topic = "1.20settingsmodv1.1";
                         sampleClient.setCallback(new MqttCallback() {
                             public void connectionLost(Throwable cause) {
                                 System.out.println("connectionLost: " + cause.getMessage() + cause.getCause());
-                                Text2 = "§4§lOopsie! we had a little fucky wucky 0w0\n\n§4§lLost connection: "+ cause.getMessage() + "\n\n§l§4" + cause.getCause();
+                                Text2 = "§4§lLost connection: "+ cause.getMessage() + "\n\n§l§4" + cause.getCause();
                             }
                         
                             public void messageArrived(String topic, MqttMessage message) {
@@ -92,37 +92,41 @@ public class SettingsModClient implements ClientModInitializer {
                                 }catch(Exception e) {
                                     System.out.println("Unable to decrypt, is someone else playing rn?");
                                 }
-                                System.out.println(new String(decrypted).length());
-                                if(!Text2.contains(new String(decrypted).split(":")[0]) && new String(decrypted).length() != 0){
-                                    Text2 += "\n§6>:§f " + decrypted + "\n";
+                                String DisplayDecrypted = decrypted.replace("pehkui::","");
+                                System.out.println(new String(DisplayDecrypted).length());
+                                if(!Text2.contains(new String(DisplayDecrypted).split(":")[0]) && new String(DisplayDecrypted).length() != 0){
+                                    Text2 += "\n§6>:§f " + DisplayDecrypted + "\n";
                                 }else{
-                                    if(new String(decrypted).length() != 0){
-                                        System.out.println(new String(decrypted).split(":")[0] + Text2.split(new String(decrypted).split(":")[0])[1].split("\n")[0]);
-                                        System.out.println(new String(decrypted));
-                                        System.out.println(Text2.replace(new String(decrypted).split(":")[0] + Text2.split(new String(decrypted).split(":")[0])[1].split("\n")[0], new String(decrypted)));
-                                        Text2 = Text2.replace(new String(decrypted).split(":")[0] + Text2.split(new String(decrypted).split(":")[0])[1].split("\n")[0], new String(decrypted));
+                                    if(new String(DisplayDecrypted).length() != 0){
+                                        System.out.println(new String(DisplayDecrypted).split(":")[0] + Text2.split(new String(DisplayDecrypted).split(":")[0])[1].split("\n")[0]);
+                                        System.out.println(new String(DisplayDecrypted));
+                                        System.out.println(Text2.replace(new String(DisplayDecrypted).split(":")[0] + Text2.split(new String(DisplayDecrypted).split(":")[0])[1].split("\n")[0], new String(DisplayDecrypted)));
+                                        Text2 = Text2.replace(new String(DisplayDecrypted).split(":")[0] + Text2.split(new String(DisplayDecrypted).split(":")[0])[1].split("\n")[0], new String(DisplayDecrypted));
                                     }
                                     //Text2 = Text2.replace(new String(decrypted).split(":")[0] + ":" + Text2.split(new String(decrypted).split(":")[0])[1].split("\n")[0], new String(decrypted).split(":")[0] + ":" + new String(decrypted).split(":")[1]);
                                 }
                                 //path+"options.txt"
-                                try {
-                                    Path pathOptions = Path.of(path+"/options.txt");
-                                    String file2 = Files.readString(pathOptions);
-                                    int lineNumber = -1;
-                                    for (String line : file2.split("\n")) {
-                                        if (line.contains(new String(decrypted).split(":")[0])) {
-                                            file2 = file2.replace(new String(decrypted).split(":")[0]+":"+file2.split("\n")[lineNumber+1].split(":")[1], new String(decrypted).split(":")[0]+":"+new String(decrypted).split(":")[1] );
-                                            FileOutputStream fileOut = new FileOutputStream(path+"/options.txt");
-                                            fileOut.write(file2.getBytes());
-                                            fileOut.close();
-                                            break;
+                                if(!(new String(decrypted).contains("pehkui::"))) {
+                                    try {
+                                        Path pathOptions = Path.of(path + "/options.txt");
+                                        String file2 = Files.readString(pathOptions);
+                                        int lineNumber = -1;
+                                        for (String line : file2.split("\n")) {
+                                            if (line.contains(new String(decrypted).split(":")[0])) {
+                                                file2 = file2.replace(new String(decrypted).split(":")[0] + ":" + file2.split("\n")[lineNumber + 1].split(":")[1], new String(decrypted).split(":")[0] + ":" + new String(decrypted).split(":")[1]);
+                                                FileOutputStream fileOut = new FileOutputStream(path + "/options.txt");
+                                                fileOut.write(file2.getBytes());
+                                                fileOut.close();
+                                                break;
+                                            }
+                                            lineNumber++;
                                         }
-                                        lineNumber++;
+                                    } catch (Exception e) {
+                                        System.out.println("Problem reading file: " + e);
                                     }
-                                }catch (Exception e) {
-                                    System.out.println("Problem reading file: " + e);
                                 }
                                 if(new String(decrypted).length() != 0){
+                                    System.out.println(decrypted);
                                     GuiDraw.renderGui(null, 0,Text2,true, decrypted);
                                 }
                             }

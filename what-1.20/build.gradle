@@ -15,6 +15,10 @@ repositories {
         name = "Eclipse Paho Repo"
         url = "https://repo.eclipse.org/content/repositories/paho-releases/"
     }
+	maven {
+		name = "jitpack"
+		url = "https://jitpack.io"
+	}
 }
 
 loom {
@@ -47,6 +51,9 @@ dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	modApi("com.github.Virtuoel:Pehkui:${pehkui_version}", {
+		exclude group: "net.fabricmc.fabric-api"
+	})
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"

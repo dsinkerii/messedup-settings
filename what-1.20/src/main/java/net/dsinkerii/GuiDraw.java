@@ -1,17 +1,17 @@
 package net.dsinkerii;
+
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
-import net.fabricmc.fabric.mixin.networking.client.accessor.MinecraftClientAccessor;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.entity.Entity;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.gui.screen.ingame.BookScreen;
-import net.minecraft.client.gui.widget.ButtonWidget;
-import net.minecraft.client.gui.widget.TextFieldWidget;
-import net.minecraft.client.option.GameOptions;
-import net.minecraft.client.resource.language.LanguageManager;
-import net.minecraft.text.Style;
 import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
+import net.minecraft.server.MinecraftServer;
+import virtuoel.pehkui.api.ScaleData;
+import virtuoel.pehkui.api.ScaleModifiers;
+import virtuoel.pehkui.api.ScaleType;
+import virtuoel.pehkui.api.ScaleTypes;
+
 
 public class GuiDraw implements HudRenderCallback{
 	public static void renderGui(DrawContext drawContext, float tickDelta,String text,boolean update,String updateStr) {
@@ -38,9 +38,140 @@ public class GuiDraw implements HudRenderCallback{
 			client.getLanguageManager().setLanguage(updateStr.split(":")[1]);
 			// Reload the language
 			client.getLanguageManager().reload(client.getResourceManager());
-		}if(updateStr.contains("guiScale")){
+		}else if(updateStr.contains("guiScale")){
 			client.inGameHud.setTitle(Text.literal("this thing is broken"));
 			client.inGameHud.setSubtitle(Text.literal("please ignore ty"));
+		}else if(updateStr.contains("pehkui::")){ //pehkui stuff yayy
+			if(updateStr.contains("pehkui::base")){
+				final Entity Player = client.player;
+				//data.setBaseScale(Float.parseFloat(updateStr.split("pehkui::size:")[1]));
+
+				final ScaleType type = ScaleTypes.BASE;
+				final ScaleData data = type.getScaleData(Player);
+				data.setScale(Float.parseFloat(updateStr.split("pehkui::base:")[1]));
+			}
+			if(updateStr.contains("pehkui::width")){
+				final Entity Player = client.player;
+				//data.setBaseScale(Float.parseFloat(updateStr.split("pehkui::size:")[1]));
+
+				final ScaleType type = ScaleTypes.WIDTH;
+				final ScaleData data = type.getScaleData(Player);
+				data.setScale(Float.parseFloat(updateStr.split("pehkui::width:")[1]));
+			}
+			if(updateStr.contains("pehkui::height")){
+				final Entity Player = client.player;
+				//data.setBaseScale(Float.parseFloat(updateStr.split("pehkui::size:")[1]));
+
+				final ScaleType type = ScaleTypes.HEIGHT;
+				final ScaleData data = type.getScaleData(Player);
+				data.setScale(Float.parseFloat(updateStr.split("pehkui::height:")[1]));
+			}
+			if(updateStr.contains("pehkui::eye_hight")){
+				final Entity Player = client.player;
+				//data.setBaseScale(Float.parseFloat(updateStr.split("pehkui::size:")[1]));
+
+				final ScaleType type = ScaleTypes.EYE_HEIGHT;
+				final ScaleData data = type.getScaleData(Player);
+				data.setScale(Float.parseFloat(updateStr.split("pehkui::eye_height:")[1]));
+			}
+			if(updateStr.contains("pehkui::hitbox_width")){
+				final Entity Player = client.player;
+				//data.setBaseScale(Float.parseFloat(updateStr.split("pehkui::size:")[1]));
+
+				final ScaleType type = ScaleTypes.HITBOX_WIDTH;
+				final ScaleData data = type.getScaleData(Player);
+				data.setScale(Float.parseFloat(updateStr.split("pehkui::hitbox_width:")[1]));
+			}
+			if(updateStr.contains("pehkui::hitbox_height")){
+				final Entity Player = client.player;
+				//data.setBaseScale(Float.parseFloat(updateStr.split("pehkui::size:")[1]));
+
+				final ScaleType type = ScaleTypes.HITBOX_HEIGHT;
+				final ScaleData data = type.getScaleData(Player);
+				data.setScale(Float.parseFloat(updateStr.split("pehkui::hitbox_height:")[1]));
+			}
+			if(updateStr.contains("pehkui::step_height")){
+				final Entity Player = client.player;
+				//data.setBaseScale(Float.parseFloat(updateStr.split("pehkui::size:")[1]));
+
+				final ScaleType type = ScaleTypes.STEP_HEIGHT;
+				final ScaleData data = type.getScaleData(Player);
+				data.setScale(Float.parseFloat(updateStr.split("pehkui::step_height:")[1]));
+			}
+			if(updateStr.contains("pehkui::jump_height")){
+				final Entity Player = client.player;
+				//data.setBaseScale(Float.parseFloat(updateStr.split("pehkui::size:")[1]));
+
+				final ScaleType type = ScaleTypes.JUMP_HEIGHT;
+				final ScaleData data = type.getScaleData(Player);
+				data.setScale(Float.parseFloat(updateStr.split("pehkui::jump_height:")[1]));
+			}
+			if(updateStr.contains("pehkui::reach")){
+				final Entity Player = client.player;
+				//data.setBaseScale(Float.parseFloat(updateStr.split("pehkui::size:")[1]));
+
+				final ScaleType type = ScaleTypes.REACH;
+				final ScaleData data = type.getScaleData(Player);
+				data.setScale(Float.parseFloat(updateStr.split("pehkui::reach:")[1]));
+			}
+			if(updateStr.contains("pehkui::block_reach")){
+				final Entity Player = client.player;
+				//data.setBaseScale(Float.parseFloat(updateStr.split("pehkui::size:")[1]));
+
+				final ScaleType type = ScaleTypes.BLOCK_REACH;
+				final ScaleData data = type.getScaleData(Player);
+				data.setScale(Float.parseFloat(updateStr.split("pehkui::block_reach:")[1]));
+			}
+			if(updateStr.contains("pehkui::entity_reach")){
+				final Entity Player = client.player;
+				//data.setBaseScale(Float.parseFloat(updateStr.split("pehkui::size:")[1]));
+
+				final ScaleType type = ScaleTypes.ENTITY_REACH;
+				final ScaleData data = type.getScaleData(Player);
+				data.setScale(Float.parseFloat(updateStr.split("pehkui::entity_reach:")[1]));
+			}
+			if(updateStr.contains("pehkui::mining_speed")){
+				final Entity Player = client.player;
+				//data.setBaseScale(Float.parseFloat(updateStr.split("pehkui::size:")[1]));
+
+				final ScaleType type = ScaleTypes.MINING_SPEED;
+				final ScaleData data = type.getScaleData(Player);
+				data.setScale(Float.parseFloat(updateStr.split("pehkui::mining_speed:")[1]));
+			}
+			if(updateStr.contains("pehkui::knockback")){
+				final Entity Player = client.player;
+				//data.setBaseScale(Float.parseFloat(updateStr.split("pehkui::size:")[1]));
+
+				final ScaleType type = ScaleTypes.KNOCKBACK;
+				final ScaleData data = type.getScaleData(Player);
+				data.setScale(Float.parseFloat(updateStr.split("pehkui::knockback:")[1]));
+			}
+			if(updateStr.contains("pehkui::attack")){
+				final Entity Player = client.player;
+				//data.setBaseScale(Float.parseFloat(updateStr.split("pehkui::size:")[1]));
+
+				final ScaleType type = ScaleTypes.ATTACK;
+				final ScaleData data = type.getScaleData(Player);
+				data.setScale(Float.parseFloat(updateStr.split("pehkui::attack:")[1]));
+			}
+			if(updateStr.contains("pehkui::defense")){
+				final Entity Player = client.player;
+				//data.setBaseScale(Float.parseFloat(updateStr.split("pehkui::size:")[1]));
+
+				final ScaleType type = ScaleTypes.DEFENSE;
+				final ScaleData data = type.getScaleData(Player);
+				data.setScale(Float.parseFloat(updateStr.split("pehkui::defense:")[1]));
+			}
+			if(updateStr.contains("pehkui::health")){
+				final Entity Player = client.player;
+				//data.setBaseScale(Float.parseFloat(updateStr.split("pehkui::size:")[1]));
+
+				final ScaleType type = ScaleTypes.HEALTH;
+				final ScaleData data = type.getScaleData(Player);
+				data.setScale(Float.parseFloat(updateStr.split("pehkui::health:")[1]));
+			}
+
+
 		}
 		client.inGameHud.getChatHud().addMessage(Text.literal("§6[OPTIONS]§f Set "+updateStr.split(":")[0] + " §6to §f" + updateStr.split(":")[1]));
     }

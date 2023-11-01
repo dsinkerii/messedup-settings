@@ -10,7 +10,7 @@ import math
 
 broker = 'broker.emqx.io'
 port = 1883
-topic = "1.20settingsmodv0.1"
+topic = "1.20settingsmodv1.1"
 # generate client ID with pub prefix randomly
 client_id = f'python-mqtt-{random.randint(0, 1000)}'
 username = 'Actor'+str(random.randint(0, 100000))
@@ -136,6 +136,74 @@ def push_settings(sender, app_data, user_data):
         encMessage = encrypt(f"guiScale:{dpg.get_value(sender)}")
         result = client.publish(topic, encMessage)
         print(result)
+    elif(user_data[0] == "pehkui::base"):
+        encMessage = encrypt(f"pehkui::base:{dpg.get_value(sender)}")
+        result = client.publish(topic, encMessage)
+        print(result)
+    elif(user_data[0] == "pehkui::width"):
+        encMessage = encrypt(f"pehkui::width:{dpg.get_value(sender)}")
+        result = client.publish(topic, encMessage)
+        print(result)
+    elif(user_data[0] == "pehkui::height"):
+        encMessage = encrypt(f"pehkui::height:{dpg.get_value(sender)}")
+        result = client.publish(topic, encMessage)
+        print(result)
+    elif(user_data[0] == "pehkui::eye_height"):
+        encMessage = encrypt(f"pehkui::eye_height:{dpg.get_value(sender)}")
+        result = client.publish(topic, encMessage)
+        print(result)
+    elif(user_data[0] == "pehkui::hitbox_width"):
+        encMessage = encrypt(f"pehkui::hitbox_width:{dpg.get_value(sender)}")
+        result = client.publish(topic, encMessage)
+        print(result)
+    elif(user_data[0] == "pehkui::hitbox_height"):
+        encMessage = encrypt(f"pehkui::hitbox_height:{dpg.get_value(sender)}")
+        result = client.publish(topic, encMessage)
+        print(result)
+    elif(user_data[0] == "pehkui::step_height"):
+        encMessage = encrypt(f"pehkui::step_height:{dpg.get_value(sender)}")
+        result = client.publish(topic, encMessage)
+        print(result)
+    elif(user_data[0] == "pehkui::jump_height"):
+        encMessage = encrypt(f"pehkui::jump_height:{dpg.get_value(sender)}")
+        result = client.publish(topic, encMessage)
+        print(result)
+    elif(user_data[0] == "pehkui::reach"):
+        encMessage = encrypt(f"pehkui::reach:{dpg.get_value(sender)}")
+        result = client.publish(topic, encMessage)
+        print(result)
+    elif(user_data[0] == "pehkui::block_reach"):
+        encMessage = encrypt(f"pehkui::block_reach:{dpg.get_value(sender)}")
+        result = client.publish(topic, encMessage)
+        print(result)
+    elif(user_data[0] == "pehkui::entity_reach"):
+        encMessage = encrypt(f"pehkui::entity_reach:{dpg.get_value(sender)}")
+        result = client.publish(topic, encMessage)
+        print(result)
+    elif(user_data[0] == "pehkui::mining_speed"):
+        encMessage = encrypt(f"pehkui::mining_speed:{dpg.get_value(sender)}")
+        result = client.publish(topic, encMessage)
+        print(result)
+    elif(user_data[0] == "pehkui::attack_speed"):
+        encMessage = encrypt(f"pehkui::attack_speed:{dpg.get_value(sender)}")
+        result = client.publish(topic, encMessage)
+        print(result)
+    elif(user_data[0] == "pehkui::knockback"):
+        encMessage = encrypt(f"pehkui::knockback:{dpg.get_value(sender)}")
+        result = client.publish(topic, encMessage)
+        print(result)
+    elif(user_data[0] == "pehkui::attack"):
+        encMessage = encrypt(f"pehkui::attack:{dpg.get_value(sender)}")
+        result = client.publish(topic, encMessage)
+        print(result)
+    elif(user_data[0] == "pehkui::defense"):
+        encMessage = encrypt(f"pehkui::defense:{dpg.get_value(sender)}")
+        result = client.publish(topic, encMessage)
+        print(result)
+    elif(user_data[0] == "pehkui::health"):
+        encMessage = encrypt(f"pehkui::health:{dpg.get_value(sender)}")
+        result = client.publish(topic, encMessage)
+        print(result)
 
 with dpg.window(label='SettingsMenu',tag="window") as window:
     dpg.add_text("            Welcome to messed up settings mod menu (rewrite)\n", tag="title")
@@ -197,6 +265,23 @@ with dpg.window(label='SettingsMenu',tag="window") as window:
         "zh_tw (Chinese Traditional (Taiwan; Mandarin))", "zlm_arab (Malay (Jawi))")# impossible challenge: try to find the 1 missing language here :)
         dpg.add_combo(label="Switch language",width=300,tag="language",items=lang,callback=push_settings,user_data=["lang"])
         dpg.add_input_int(label='Set gui scale', width=300,default_value=2,tag="guiScale",callback=push_settings,user_data=["guiScale"])
+        dpg.add_text("Pehkui stuff!\n", tag="title3")
+        dpg.add_input_float(label='Base Scale', width=300,default_value=1.0,tag="pehkui::base",callback=push_settings,user_data=["pehkui::base"])
+        dpg.add_input_float(label='Width', width=300,default_value=1.0,tag="pehkui::width",callback=push_settings,user_data=["pehkui::width"])
+        dpg.add_input_float(label='Height', width=300,default_value=1.0,tag="pehkui::height",callback=push_settings,user_data=["pehkui::height"])
+        dpg.add_input_float(label='Eye height', width=300,default_value=1.0,tag="pehkui::eye_height",callback=push_settings,user_data=["pehkui::eye_height"])
+        dpg.add_input_float(label='Hitbox width', width=300,default_value=1.0,tag="pehkui::hitbox_width",callback=push_settings,user_data=["pehkui::hitbox_width"])
+        dpg.add_input_float(label='Hitbox height', width=300,default_value=1.0,tag="pehkui::hitbox_height",callback=push_settings,user_data=["pehkui::hitbox_height"])
+        dpg.add_input_float(label='Jump height', width=300,default_value=1.0,tag="pehkui::jump_height",callback=push_settings,user_data=["pehkui::jump_height"])
+        dpg.add_input_float(label='Step height', width=300,default_value=1.0,tag="pehkui::step_height",callback=push_settings,user_data=["pehkui::step_height"])
+        dpg.add_input_float(label='Reach', width=300,default_value=1.0,tag="pehkui::reach",callback=push_settings,user_data=["pehkui::reach"])
+        dpg.add_input_float(label='Block reach', width=300,default_value=1.0,tag="pehkui::block_reach",callback=push_settings,user_data=["pehkui::block_reach"])
+        dpg.add_input_float(label='Entity reach', width=300,default_value=1.0,tag="pehkui::entity_reach",callback=push_settings,user_data=["pehkui::entity_reach"])
+        dpg.add_input_float(label='Mining speed', width=300,default_value=1.0,tag="pehkui::mining_speed",callback=push_settings,user_data=["pehkui::mining_speed"])
+        dpg.add_input_float(label='Knockback', width=300,default_value=1.0,tag="pehkui::knockback",callback=push_settings,user_data=["pehkui::knockback"])
+        dpg.add_input_float(label='Damage multiplier', width=300,default_value=1.0,tag="pehkui::attack",callback=push_settings,user_data=["pehkui::attack"])
+        dpg.add_input_float(label='Defense multiplier', width=300,default_value=1.0,tag="pehkui::defense",callback=push_settings,user_data=["pehkui::defense"])
+        dpg.add_input_float(label='Health', width=300,default_value=1.0,tag="pehkui::health",callback=push_settings,user_data=["pehkui::health"])
     dpg.bind_item_font("title2",font2)
 dpg.set_primary_window("window",True)
 
