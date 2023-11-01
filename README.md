@@ -7,7 +7,9 @@ https://youtu.be/qbOCx4pdUnQ
   
   ❓ if you have any issues, open an issue here if you have a github account, or dm me at `@dsinkerii` on discord (but make sure you ping me on discord or smth if you cant use both methods)
   
-  ‼️ pehkui mod is now required!! download it at: https://www.curseforge.com/minecraft/mc-mods/pehkui/files/4821741
+  ❗ pehkui mod is now required!! download it at: https://www.curseforge.com/minecraft/mc-mods/pehkui/files/4821741
+  
+  ❗ also, the mod is now a 1.20.1 fabric mod
 
 # ‼️ READ BEFORE INSTALLING ‼️
 
