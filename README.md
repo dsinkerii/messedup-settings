@@ -13,8 +13,7 @@ https://youtu.be/qbOCx4pdUnQ
 
 🔴 IF you are the one who is going to edit the settings, make sure to follow these steps:
 1. make sure you have python installed, its a very important step.
-2. run the `download-dependencies.bat` file if you are on windows, or `download-dependencies.sh` if you use linux/mac os
-   after some time, all of the dependencies will install.
+2. run the `download-dependencies.bat` file if you are on windows, or `download-dependencies.sh` if you use linux/mac os. after some time, all of the dependencies will install.
 3. run `gui.bat` or `gui.sh` file, to launch the gui.
 4. if everything before was done correctly, a window should pop out. Make sure to enter the secret key given by the mod.
 
