@@ -1,28 +1,21 @@
 # messedup-settings
 https://youtu.be/qbOCx4pdUnQ
 
-### (for best experience, install https://git.frohnmeyer-wds.de/JfMods/Slyde to remove limit from options, allows to set any value more or less than intended)
+# Additional info...
+
+  ⚠️ (for best experience, install https://git.frohnmeyer-wds.de/JfMods/Slyde to remove limit from options, allows to set any value more or less than intended)
+  
+  ❓ if you have any issues, open an issue here if you have a github account, or dm me at `@dsinkerii` on discord (but make sure you ping me on discord or smth if you cant use both methods)
+  
+  ‼️ pehkui mod is now required!! download it at: https://www.curseforge.com/minecraft/mc-mods/pehkui/files/4821741
 
 # ‼️ READ BEFORE INSTALLING ‼️
 
 🔴 IF you are the one who is going to edit the settings, make sure to follow these steps:
 1. make sure you have python installed, its a very important step.
-2. run in your console this command
-```bash
-python -m pip install paho.mqtt pycryptodome pillow dearpygui 
-```
-3. then, after installing it, install the `actor.zip`, this contains all required files for the script.
-4. go to the unzipped folder in your console by running
-```bash
-cd {REPLACE HERE THE PATH TO THE FOLDER}
-```
-(make sure to actually replace the path to the folder.)
-
-5. run:
-```bash
-python host.py
-```
-6. if everything before was done correctly, a window should pop out. Make sure to enter the secret key given by the mod.
+2. run the `download-dependencies.bat` file if you are on windows, or `download-dependencies.sh` if you use linux/mac os. after some time, all of the dependencies will install.
+3. run `gui.bat` or `gui.sh` file, to launch the gui.
+4. if everything before was done correctly, a window should pop out. Make sure to enter the secret key given by the mod.
 
 🔴 IF you are the one running the mod, allowing to change your settings, follow these steps:
 1. make sure you have 1.20 fabric installed.
