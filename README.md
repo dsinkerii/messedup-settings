@@ -20,7 +20,7 @@ https://youtu.be/qbOCx4pdUnQ
 4. if everything before was done correctly, a window should pop out. Make sure to enter the secret key given by the mod.
 
 🔴 IF you are the one running the mod, allowing to change your settings, follow these steps:
-1. make sure you have 1.20 fabric installed.
+1. make sure you have 1.20.1 fabric installed.
 2. After launching the mod, go to the .minecraft folder, look for the `password.txt` file. There will be a bunch of numbers and letters, `its your secret key.`
 3. this key allows anyone to edit your settings, so be careful on who you give this secret key to.
 4. PS. your old `options.txt` file wont be recovered once you close minecraft, make sure to make a copy of it if you plan on playing with it with someone.
