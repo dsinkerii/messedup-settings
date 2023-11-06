@@ -3,7 +3,7 @@ https://youtu.be/qbOCx4pdUnQ
 
 # Additional info...
 
-  ⚠️ (for best experience, install https://git.frohnmeyer-wds.de/JfMods/Slyde to remove limit from options, allows to set any value more or less than intended)
+  ⚠️ (for best experience, install https://modrinth.com/mod/slyde/version/1.7.1 to remove limit from options, allows to set any value more or less than intended)
   
   ❓ if you have any issues, open an issue here if you have a github account, or dm me at `@dsinkerii` on discord (but make sure you ping me on discord or smth if you cant use both methods)
   
