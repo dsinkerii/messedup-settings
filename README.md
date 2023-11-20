@@ -5,7 +5,7 @@ https://youtu.be/qbOCx4pdUnQ
 
   ⚠️ (for best experience, install https://modrinth.com/mod/slyde/version/1.7.1 to remove limit from options, allows to set any value more or less than intended)
   
-  ❓ if you have any issues, open an issue here if you have a github account, or dm me at `@dsinkerii` on discord (but make sure you ping me on discord or smth if you cant use both methods)
+  ❓ if you have any issues, open an issue here if you have a github account, or dm me at `@dsinkerii` on discord (but make sure you ping me on discord or smth if you cant use both methods) (BUT PLEASE DO NOT PING YAHIA. HE'S NOT A DEVELOPER OF THE MOD SO HE WONT BE ABLE TO HELP)
   
   ❗ pehkui mod is now required!! download it at: https://www.curseforge.com/minecraft/mc-mods/pehkui/files/4821741
   
