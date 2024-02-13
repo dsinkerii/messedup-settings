@@ -8,7 +8,7 @@ import os
 import dearpygui.dearpygui as dpg # dearpygui my beloved...
 import math
 
-broker = 'broker.hivemq.com'
+broker = 'mqtt.eclipseprojects.io'
 port = 1883
 topic = "1.20settingsmodv1.1"
 # generate client ID with pub prefix randomly
@@ -58,7 +58,7 @@ def on_connect(client, userdata, flags, rc):
     else:
         print("Failed to connect, return code %d\n", rc)
 #connect to mqtt
-client = mqtt_client.Client(mqtt_client.CallbackAPIVersion.VERSION1, client_id)
+client = mqtt_client.Client(client_id)
 client.on_connect = on_connect
 client.connect(broker, port)
 client.loop_start()

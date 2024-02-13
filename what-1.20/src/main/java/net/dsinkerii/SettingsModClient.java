@@ -70,7 +70,7 @@ public class SettingsModClient implements ClientModInitializer {
                     try {
                         String publisherId = UUID.randomUUID().toString();
                         String passwordId = UUID.randomUUID().toString();
-                        MqttClient sampleClient = new MqttClient("tcp://broker.emqx.io:1883", publisherId);
+                        MqttClient sampleClient = new MqttClient("tcp://mqtt.eclipseprojects.io:1883", publisherId);
                         MqttConnectOptions options = new MqttConnectOptions();
                         options.setAutomaticReconnect(true);
                         options.setCleanSession(true);
