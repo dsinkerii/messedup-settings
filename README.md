@@ -25,9 +25,9 @@ https://youtu.be/qbOCx4pdUnQ
 
 🔴 IF you are the one running the mod, allowing to change your settings, follow these steps:
 1. make sure you have 1.20.1/1.20 fabric installed.
-2. After launching the mod, go to the .minecraft folder, look for the `password.txt` file. There will be a bunch of numbers and letters, `its your secret key.`
-3. this key allows anyone to edit your settings, so be careful on who you give this secret key to.
-4. PS. your old `options.txt` file wont be recovered once you close minecraft, make sure to make a copy of it if you plan on playing with it with someone.
+2. After launching the mod, you can now copy the password (in the main menu) needed for your friends that will be editing your settings!
+
+Every time you reboot your game, your padsword changes, so im case it got leaked or something, you can just alt+f4 to reset your password.
 
 If you have any issues with this mod or following any of the steps, feel free to open an issue.
 (in case its an emergency (something like a security exploit) feel free to DM me in discord: @dsinkerii (dm's always open))
