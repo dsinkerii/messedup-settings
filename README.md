@@ -12,7 +12,7 @@ https://youtu.be/qbOCx4pdUnQ
   ❗ also, the mod is now a 1.20.1/1.20 fabric mod
 
   ⭐ if you like this mod please hit that funny star button, i really appreciate that 
-![](https://media.discordapp.net/attachments/1134600951999778940/1137065459196383403/image.png?width=20&height=20) (also possible rewrite to c++ on 15 stars?)
+![](https://media.discordapp.net/attachments/1134600951999778940/1137065459196383403/image.png?width=20&height=20) (also possible rewrite to c**#** on **20** stars? this time fr like ignore the last milestone of 15 stars this time im being real)
 
 
 # ‼️ READ BEFORE INSTALLING ‼️
