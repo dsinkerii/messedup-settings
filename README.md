@@ -1,6 +1,9 @@
 # messedup-settings
 https://youtu.be/qbOCx4pdUnQ
 
+# updaet
+  holy shit tysm people i actually did not expect for this repo to get 20 stars..... time to rewrite the project lol
+
 # Additional info...
 
   ⚠️ (for best experience, install https://modrinth.com/mod/slyde/version/1.7.1 to remove limit from options, allows to set any value more or less than intended)
