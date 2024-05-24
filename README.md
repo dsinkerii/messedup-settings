@@ -1,8 +1,8 @@
 # messedup-settings
 https://youtu.be/qbOCx4pdUnQ
 
-# updaet
-  holy shit tysm people i actually did not expect for this repo to get 20 stars..... time to rewrite the project lol
+# updaet 6:
+  there yall go! no more python shenanigans, since its rewritten to c# now! just launch the exe and now it just... works!
 
 # Additional info...
 
@@ -12,19 +12,21 @@ https://youtu.be/qbOCx4pdUnQ
   
   ❗ pehkui mod is now required!! download it at: https://www.curseforge.com/minecraft/mc-mods/pehkui/files/4821741
   
-  ❗ also, the mod is now a 1.20.1/1.20 fabric mod
+  ❗ also, the mod is now a 1.20.x fabric mod
 
   ⭐ if you like this mod please hit that funny star button, i really appreciate that 
-![](https://media.discordapp.net/attachments/1134600951999778940/1137065459196383403/image.png?width=20&height=20) (also possible rewrite to **c#** on **20** stars? this time fr like ignore the last milestone of 15 stars this time im being real)
+![](https://media.discordapp.net/attachments/1134600951999778940/1137065459196383403/image.png?width=20&height=20) 
 
 
 # ‼️ READ BEFORE INSTALLING ‼️
 
+[Here's](https://github.com/dsinkerii/messedup-settings/releases/latest) the latest version of the mod if you dont know how to use github (i refuse to upload on modrinth and curseforge since.... lazzyyy)
+
 🔴 IF you are the one who is going to edit the settings, make sure to follow these steps:
-1. make sure you have python installed, its a very important step.
-2. run the `download-dependencies.bat` file if you are on windows, or `download-dependencies.sh` if you use linux/mac os. after some time, all of the dependencies will install.
-3. run `gui.bat` or `gui.sh` file, to launch the gui.
-4. if everything before was done correctly, a window should pop out. Make sure to enter the secret key given by the mod.
+1. install [dotnet](https://dotnet.microsoft.com/en-us/download) (if u havent already)
+2. download & extract the zipfile attached to the release (for example, if you use windows, download `host.1.3.win-x64.zip`)
+3. find the executable file to launch it (again, for windows users its `host.exe`, osx and linux = `host`)
+4. paste in your password and change your nickname if you want to, and enjoy!
 
 🔴 IF you are the one running the mod, allowing to change your settings, follow these steps:
 1. make sure you have 1.20.1/1.20 fabric installed.
@@ -34,8 +36,6 @@ Every time you reboot your game, your padsword changes, so im case it got leaked
 
 If you have any issues with this mod or following any of the steps, feel free to open an issue.
 (in case its an emergency (something like a security exploit) feel free to DM me in discord: @dsinkerii (dm's always open))
-
-# UPDATE 4: if you know how to compile a script and you use windows (because i am a linux user) feel free to open a pull request with the compiled script in a zip file so i can add it as a .exe file. (i dont want to ask my friends who dont know python at all explain to do this every update)
 
 # how does it work
 ![what](https://github.com/dsinkerii/messedup-settings/assets/104655906/626da6e5-8ea3-47a4-ba86-8cf079f68bc8)
