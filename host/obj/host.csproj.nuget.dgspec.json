@@ -1,0 +1,106 @@
+{
+  "format": 1,
+  "restore": {
+    "/mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/host.csproj": {}
+  },
+  "projects": {
+    "/mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/host.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/host.csproj",
+        "projectName": "host",
+        "projectPath": "/mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/host.csproj",
+        "packagesPath": "/home/dsinkerii/.nuget/packages/",
+        "outputPath": "/mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/dsinkerii/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Avalonia": {
+              "target": "Package",
+              "version": "[11.0.10, )"
+            },
+            "Avalonia.Desktop": {
+              "target": "Package",
+              "version": "[11.0.10, )"
+            },
+            "Avalonia.Fonts.Inter": {
+              "target": "Package",
+              "version": "[11.0.10, )"
+            },
+            "Avalonia.ReactiveUI": {
+              "target": "Package",
+              "version": "[11.0.10, )"
+            },
+            "Avalonia.Themes.Fluent": {
+              "target": "Package",
+              "version": "[11.0.10, )"
+            },
+            "DialogHost.Avalonia": {
+              "target": "Package",
+              "version": "[0.7.7, )"
+            },
+            "HiveMQtt": {
+              "target": "Package",
+              "version": "[0.14.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.5, 8.0.5]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.osx-x64",
+              "version": "[8.0.5, 8.0.5]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.105/PortableRuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "osx-x64": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

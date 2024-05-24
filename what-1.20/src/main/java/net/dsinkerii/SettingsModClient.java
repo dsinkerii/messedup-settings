@@ -30,6 +30,8 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
+import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.minecraft.client.gui.screen.option.GameOptionsScreen;
 import org.eclipse.paho.client.mqttv3.*;
 
 import com.mojang.authlib.minecraft.client.MinecraftClient;
@@ -43,16 +45,34 @@ import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 //import net.fabricmc.fabric.api.event.player.AttackBlockCallback;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.text.Text;
+import org.lwjgl.glfw.GLFW;
+
 public class SettingsModClient implements ClientModInitializer {
     public String Text2 = "s";
     public String Password;
+    public String server = "tcp://mqtt.eclipseprojects.io:1883";
     //private net.minecraft.client.MinecraftClient client;
     @Override
     public void onInitializeClient() {
+
         HudRenderCallback.EVENT.register((drawContext, tickDelta) -> {
-            GuiDraw.renderGui(drawContext, tickDelta,Text2,false,"");
+            GuiDraw.renderGui(drawContext, tickDelta,Text2,false,"", "");
         });
         String path = String.valueOf(FabricLoader.getInstance().getGameDir());
+
+        // backup before starting
+
+        Path pathOptions = Path.of(path + "/options.txt");
+        String file2 = null;
+        try {
+            file2 = Files.readString(pathOptions);
+            FileOutputStream fileOut = new FileOutputStream(path + "/options-backup.txt");
+            fileOut.write(file2.getBytes());
+            fileOut.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         File file = new File(path+"/password.txt");
         try (BufferedWriter br = new BufferedWriter(new FileWriter(file))) {
             Password = bytesToHex(generateAESKey().getEncoded());
@@ -70,14 +90,30 @@ public class SettingsModClient implements ClientModInitializer {
                     try {
                         String publisherId = UUID.randomUUID().toString();
                         String passwordId = UUID.randomUUID().toString();
-                        MqttClient sampleClient = new MqttClient("tcp://mqtt.eclipseprojects.io:1883", publisherId);
+
+                        Path ServerFile = Path.of(path + "/server.txt");
+                        try {
+                            String serverFromFile = Files.readString(ServerFile);
+                            if(serverFromFile.isEmpty()){
+                                File file = new File(path+"/server.txt");
+                                try (BufferedWriter br = new BufferedWriter(new FileWriter(file))) {
+                                    br.write(server);
+                                } catch (IOException e) {
+
+                                }
+                            }else{
+                                server = serverFromFile;
+                            }
+                        }catch (java.nio.file.NoSuchFileException e) {}
+
+                        MqttClient sampleClient = new MqttClient(server, publisherId);
                         MqttConnectOptions options = new MqttConnectOptions();
                         options.setAutomaticReconnect(true);
                         options.setCleanSession(true);
                         options.setUserName(publisherId);
                         options.setPassword(passwordId.toCharArray());
                         options.setConnectionTimeout(10);
-                        String Topic = "1.20settingsmodv1.1";
+                        String Topic = "1.20settingsmodv1.3";
                         sampleClient.setCallback(new MqttCallback() {
                             public void connectionLost(Throwable cause) {
                                 System.out.println("connectionLost: " + cause.getMessage() + cause.getCause());
@@ -86,9 +122,12 @@ public class SettingsModClient implements ClientModInitializer {
                         
                             public void messageArrived(String topic, MqttMessage message) {
                                 String decrypted = "";
+                                String username = "";
                                 System.out.println("Raw message: " + message.toString());
                                 try{
                                     decrypted = decrypt(new String(message.toString()), Password);
+                                    username = decrypted.split(":")[0];
+                                    decrypted = decrypted.replace(username + ":", "");
                                 }catch(Exception e) {
                                     System.out.println("Unable to decrypt, is someone else playing rn?");
                                 }
@@ -127,7 +166,7 @@ public class SettingsModClient implements ClientModInitializer {
                                 }
                                 if(new String(decrypted).length() != 0){
                                     System.out.println(decrypted);
-                                    GuiDraw.renderGui(null, 0,Text2,true, decrypted);
+                                    GuiDraw.renderGui(null, 0,Text2,true, decrypted, username);
                                 }
                             }
                         
@@ -137,14 +176,16 @@ public class SettingsModClient implements ClientModInitializer {
                         });
                         sampleClient.connect(options);
                         sampleClient.subscribe(Topic, 0);
-                        Text2 = "Connected to MQTT!\n";
+                        Text2 = "Connected to MQTT!\n\nServer§6: " + server + "§f\n";
                         System.out.println("contnected to MQTT...");
                     }catch(MqttException me) {
                         System.out.println("not contnected to MQTT...");
                         System.out.println(me);
                         Text2 = "Not connected to MQTT... Error message: " + me;
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
                     }
-                    String Topic = "SettingsMod 1.20";
+                String Topic = "SettingsMod 1.20";
                     //IMqttClient publisher = new MqttClient("tcp://iot.eclipse.org:1883",publisherId);
                     //while(true){
                     //}

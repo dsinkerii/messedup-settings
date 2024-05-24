@@ -14,7 +14,7 @@ import virtuoel.pehkui.api.ScaleTypes;
 
 
 public class GuiDraw implements HudRenderCallback{
-	public static void renderGui(DrawContext drawContext, float tickDelta,String text,boolean update,String updateStr) {
+	public static void renderGui(DrawContext drawContext, float tickDelta,String text,boolean update,String updateStr, String username) {
 		MinecraftClient mc = MinecraftClient.getInstance();
 		if(!update){
 			TextRenderer renderer = mc.textRenderer;
@@ -24,7 +24,7 @@ public class GuiDraw implements HudRenderCallback{
 			}
 		}
 		else {
-			update_settings(mc,updateStr);
+			update_settings(mc,updateStr, username);
 		}
 	}
 	@Override
@@ -32,7 +32,7 @@ public class GuiDraw implements HudRenderCallback{
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'onHudRender'");
 	}
-	static void update_settings(MinecraftClient client, String updateStr){
+	static void update_settings(MinecraftClient client, String updateStr, String username){
 		client.options.load();
 		if(updateStr.contains("lang")) {
 			client.getLanguageManager().setLanguage(updateStr.split(":")[1]);
@@ -148,7 +148,6 @@ public class GuiDraw implements HudRenderCallback{
 			}
 			if(updateStr.contains("pehkui::attack")){
 				final Entity Player = client.player;
-				//data.setBaseScale(Float.parseFloat(updateStr.split("pehkui::size:")[1]));
 
 				final ScaleType type = ScaleTypes.ATTACK;
 				final ScaleData data = type.getScaleData(Player);
@@ -173,6 +172,7 @@ public class GuiDraw implements HudRenderCallback{
 
 
 		}
-		client.inGameHud.getChatHud().addMessage(Text.literal("§6[OPTIONS]§f Set "+updateStr.split(":")[0] + " §6to §f" + updateStr.split(":")[1]));
+		updateStr = updateStr.replace("pehkui::", "pehkui-");
+		client.inGameHud.getChatHud().addMessage(Text.literal("§6[OPTIONS] §e" + username + "§f set "+updateStr.split(":")[0] + " §6to §f" + updateStr.split(":")[1]));
     }
 }

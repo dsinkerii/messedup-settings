@@ -1,0 +1,709 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:host.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dialogHost="clr-namespace:DialogHostAvalonia;assembly=DialogHost.Avalonia"
+        xmlns:local="clr-namespace:FloatPrecisionFixer" 
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="host.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Dsinkerii.HostRewrite"
+        TransparencyLevelHint="AcrylicBlur"
+        FontFamily="{StaticResource NAMU}"
+        Background="Transparent"
+        ExtendClientAreaToDecorationsHint="True">
+    <Window.Resources>
+        <local:precisionFix x:Key="precisionFix"/>
+    </Window.Resources>
+
+    <ScrollViewer>
+        <!-- no password prompt -->
+        <dialogHost:DialogHost Name="mqttnopwd" CloseOnClickAway="True">
+            <dialogHost:DialogHost.DialogContent>
+                <StackPanel>
+                    <TextBlock Padding="20" TextAlignment="Center" FontSize="25" Text="MQTT password invalid!! (empty or incorrect)" HorizontalAlignment="Center"/>
+                    <TextBlock Padding="20" TextAlignment="Center" FontSize="15" Text="(press anywhere outside to close)" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </dialogHost:DialogHost.DialogContent>
+                <Panel>
+                    <ExperimentalAcrylicBorder >
+                        <ExperimentalAcrylicBorder.Material>
+                            <ExperimentalAcrylicMaterial
+                                BackgroundSource="Digger"
+                                TintColor="#33000000"
+                                TintOpacity="0.8"
+                                MaterialOpacity="0.65" />
+                        </ExperimentalAcrylicBorder.Material>
+                    </ExperimentalAcrylicBorder>
+
+                    <Border 
+                        Height="200" 
+                        Background="#14151c"
+                        VerticalAlignment="Top"
+                        >
+                        <StackPanel>
+                            <TextBlock 
+                                Text="Welcome to messed up settings mod menu&#x0a;(c# rewrite)"
+                                FontFamily="{StaticResource NAMU}"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                TextAlignment="Center"
+                                FontSize="30"
+                                Foreground="#d4d8eb"
+                            />
+                            <TextBlock 
+                                Text="host version: v1.3"
+                                FontFamily="{StaticResource NAMU}"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                TextAlignment="Center"
+                                FontSize="10"
+                                Foreground="#96969b"
+                            />
+                            <Border
+                                CornerRadius="20"
+                                Background="#1e2037"
+                                Height="100" 
+                                Margin="10">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel Grid.Column="0" Margin="10">
+                                        <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#d4d8eb">Secret key:</TextBlock>
+                                        <TextBox Name="password" PasswordChar="*" Watermark="Secret key" Width="300" HorizontalAlignment="Center"/>
+                                        <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">get it from the main menu of the game</TextBlock>
+                                    </StackPanel>
+                                    
+                                    <StackPanel Grid.Column="1" Margin="10">
+                                        <TextBlock Margin="0 5" TextAlignment="Center" Foreground="#d4d8eb">Nickname:</TextBlock>
+                                        <TextBox Name="nickname" Watermark="Nickname" TextAlignment="Left" Width="300" HorizontalAlignment="Center"/>
+                                        <TextBlock Margin="0 5" TextAlignment="Center" Foreground="#96969b">your nickname, restart after editing.</TextBlock>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Column="2" Margin="10">
+                                        <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#d4d8eb">MQTT server:</TextBlock>
+                                        <TextBox Name="mqtt" Watermark="MQTT server here" Width="300" HorizontalAlignment="Center"/>
+                                        <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">leave it unchanged if you have no idea what that is</TextBlock>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+                    <Border Padding="200">
+                        <StackPanel>
+                            <TextBlock Text="Graphics and gameplay stuffs" 
+                                        Padding="15"
+                                        FontSize="35"
+                                        HorizontalAlignment="Center"/>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <StackPanel Grid.Row="0" Margin="10">
+                                    <TextBlock Text="Field Of View" 
+                                        HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding #fov.Value}" 
+                                        Margin="0, -15, 0, -15"
+                                        HorizontalAlignment="Right"/>
+                                    <Slider 
+                                        TickFrequency="1" 
+                                        IsSnapToTickEnabled="True" 
+                                        Maximum="200"
+                                        Minimum="-100"
+                                        Value="100"
+                                        Name="fov"/>
+                                    
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">(breaks after 110, unless you're playing with slyder mod on)</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" Margin="10">
+                                    <TextBlock Text="Mouse Sensitivity" 
+                                        HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding #mouseSensitivity.Value}" 
+                                        Margin="0, -15, 0, -15"
+                                        HorizontalAlignment="Right"/>
+                                    <Slider 
+                                        TickFrequency="1" 
+                                        IsSnapToTickEnabled="True" 
+                                        Maximum="200"
+                                        Minimum="-100"
+                                        Value="100"
+                                        Name="mouseSensitivity"/>
+                                    
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">mouse sensitivity, thats it</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="2" Margin="10">
+                                    <TextBlock Text="Auto Jump" 
+                                        HorizontalAlignment="Center"/>
+                                    <ToggleButton 
+                                        HorizontalAlignment="Center"
+                                        IsChecked="False" 
+                                        Name="autoJump">
+                                        <Panel>
+                                            <PathIcon Classes="jump-on"
+                                                        Data="{StaticResource arrow_curve_up_right_regular}" />
+                                            <PathIcon Classes="jump-off"
+                                                        Data="{StaticResource arrow_curve_up_right_regular}" />
+                                        </Panel>    
+                                    </ToggleButton>
+                                    
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">toggle auto jump</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="3" Margin="10">
+                                    <TextBlock Text="Invert Y Mouse" 
+                                        HorizontalAlignment="Center"/>
+                                    <ToggleButton 
+                                        HorizontalAlignment="Center"
+                                        IsChecked="False" 
+                                        Name="invertYMouse">
+                                        <Panel>
+                                            <PathIcon Classes="ycam-on"
+                                                        Data="{StaticResource camera_switch_regular}" />
+                                            <PathIcon Classes="ycam-off"
+                                                        Data="{StaticResource camera_switch_regular}" />
+                                        </Panel>    
+                                    </ToggleButton>
+                                    
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">inverts y mouse movement, so looking down is up, and looking up is down</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="4" Margin="10">
+                                    <TextBlock Text="Audio volume (master)" 
+                                        HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding #soundCategory_master.Value}" 
+                                        Margin="0, -15, 0, -15"
+                                        HorizontalAlignment="Right"/>
+                                    <Slider 
+                                        TickFrequency="1" 
+                                        IsSnapToTickEnabled="True" 
+                                        Maximum="500"
+                                        Minimum="0"
+                                        Value="100"
+                                        Name="soundCategory_master"/>
+                                    
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">make 'em deaf... or deaf (get it?)</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="5" Margin="10">
+                                    <TextBlock Text="Max fps" 
+                                        HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding #maxFps.Value}" 
+                                        Margin="0, -15, 0, -15"
+                                        HorizontalAlignment="Right"/>
+                                    <Slider 
+                                        TickFrequency="1" 
+                                        IsSnapToTickEnabled="True" 
+                                        Maximum="200"
+                                        Minimum="0"
+                                        Value="100"
+                                        Name="maxFps"/>
+                                    
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">dont set it to 0... like, really</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="6" Margin="10">
+                                    <TextBlock Text="Render distance" 
+                                        HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding #renderDistance.Value}" 
+                                        Margin="0, -15, 0, -15"
+                                        HorizontalAlignment="Right"/>
+                                    <Slider 
+                                        TickFrequency="1" 
+                                        IsSnapToTickEnabled="True" 
+                                        Maximum="60"
+                                        Minimum="-1"
+                                        Value="12"
+                                        Name="renderDistance"/>
+                                    
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">render distance (world chunks)</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="7" Margin="10">
+                                    <TextBlock Text="Entity Render distance" 
+                                        HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding #entityDistanceScaling.Value}" 
+                                        Margin="0, -15, 0, -15"
+                                        HorizontalAlignment="Right"/>
+                                    <Slider 
+                                        TickFrequency="1" 
+                                        IsSnapToTickEnabled="True" 
+                                        Maximum="300"
+                                        Minimum="0"
+                                        Value="100"
+                                        Name="entityDistanceScaling"/>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">entity distance scaling (render distance)</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="8" Margin="10">
+                                    <TextBlock Text="Gamma" 
+                                        HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding #gamma.Value}" 
+                                        Margin="0, -15, 0, -15"
+                                        HorizontalAlignment="Right"/>
+                                    <Slider 
+                                        TickFrequency="1" 
+                                        IsSnapToTickEnabled="True" 
+                                        Maximum="100"
+                                        Minimum="-100"
+                                        Value="10"
+                                        Name="gamma"/>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">gamma</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="9" Margin="10">
+                                    <TextBlock Text="Fov Effect Scale" 
+                                        HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding #fovEffectScale.Value}" 
+                                        Margin="0, -15, 0, -15"
+                                        HorizontalAlignment="Right"/>
+                                    <Slider 
+                                        TickFrequency="1" 
+                                        IsSnapToTickEnabled="True" 
+                                        Maximum="100"
+                                        Minimum="-100"
+                                        Value="10"
+                                        Name="fovEffectScale"/>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">changes how much your fov is affected by running</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="10" Margin="10">
+                                    <TextBlock Text="Damage Tilt Strength" 
+                                        HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding #damageTiltStrength.Value}" 
+                                        Margin="0, -15, 0, -15"
+                                        HorizontalAlignment="Right"/>
+                                    <Slider 
+                                        TickFrequency="1" 
+                                        IsSnapToTickEnabled="True" 
+                                        Maximum="100"
+                                        Minimum="-100"
+                                        Value="10"
+                                        Name="damageTiltStrength"/>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">changes how much your camera rotation is affected by damage</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="11" Margin="10">
+                                    <TextBlock Text="GUI scale" 
+                                        HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding #guiScale.Value}" 
+                                        Margin="0, -15, 0, -15"
+                                        HorizontalAlignment="Right"/>
+                                    <Slider 
+                                        TickFrequency="1" 
+                                        IsSnapToTickEnabled="True" 
+                                        Maximum="10"
+                                        Minimum="1"
+                                        Value="2"
+                                        Name="guiScale"/>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">gui scale</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="12" Margin="10">
+                                    <TextBlock Text="Chat Scale" 
+                                        HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding #chatScale.Value}" 
+                                        Margin="0, -15, 0, -15"
+                                        HorizontalAlignment="Right"/>
+                                    <Slider 
+                                        TickFrequency="1" 
+                                        IsSnapToTickEnabled="True" 
+                                        Maximum="100"
+                                        Minimum="0"
+                                        Value="10"
+                                        Name="chatScale"/>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">chat scale</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="13" Margin="10">
+                                    <Separator Padding="15" Background="#6f709c"/>
+                                    <TextBlock Text="Keybinds" 
+                                            Padding="15"
+                                            FontSize="35"
+                                            HorizontalAlignment="Center"/>
+
+                                    <TextBlock Text="Rebind key forward" 
+                                        Padding="15"
+                                        HorizontalAlignment="Center"/>
+                                    <ComboBox Width="500" HorizontalAlignment="Center" Name="key_keylldotllforward" SelectedIndex="0" MaxDropDownHeight="100"> 
+                                    </ComboBox>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">that button you press to walk forwards</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="14" Margin="10">
+                                    <TextBlock Text="Rebind key backward" 
+                                        HorizontalAlignment="Center"/>
+                                    <ComboBox Width="500" HorizontalAlignment="Center" Name="key_keylldotllback" SelectedIndex="0" MaxDropDownHeight="100"> 
+                                    </ComboBox>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">that button you press to walk backwards</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="15" Margin="10">
+                                    <TextBlock Text="Rebind key left" 
+                                        HorizontalAlignment="Center"/>
+                                    <ComboBox Width="500" HorizontalAlignment="Center" Name="key_keylldotllleft" SelectedIndex="0" MaxDropDownHeight="100"> 
+                                    </ComboBox>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">that button you press to walk left</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="16" Margin="10">
+                                    <TextBlock Text="Rebind key right" 
+                                        HorizontalAlignment="Center"/>
+                                    <ComboBox Width="500" HorizontalAlignment="Center" Name="key_keylldotllright" SelectedIndex="0" MaxDropDownHeight="100"> 
+                                    </ComboBox>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">that button you press to walk right</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="17" Margin="10">
+                                    <TextBlock Text="Rebind jump" 
+                                        HorizontalAlignment="Center"/>
+                                    <ComboBox Width="500" HorizontalAlignment="Center" Name="key_keylldotlljump" SelectedIndex="0" MaxDropDownHeight="100"> 
+                                    </ComboBox>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">that button you press to jump</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="18" Margin="10">
+                                    <TextBlock Text="Rebind sneak" 
+                                        HorizontalAlignment="Center"/>
+                                    <ComboBox Width="500" HorizontalAlignment="Center" Name="key_keylldotllsneak" SelectedIndex="0" MaxDropDownHeight="100"> 
+                                    </ComboBox>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">that button you press to sneak</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="19" Margin="10">
+                                    <TextBlock Text="Rebind sprint" 
+                                        HorizontalAlignment="Center"/>
+                                    <ComboBox Width="500" HorizontalAlignment="Center" Name="key_keylldotllsprint" SelectedIndex="0" MaxDropDownHeight="100"> 
+                                    </ComboBox>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">that button you press to sprint</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="20" Margin="10">
+                                    <TextBlock Text="Rebind drop" 
+                                        HorizontalAlignment="Center"/>
+                                    <ComboBox Width="500" HorizontalAlignment="Center" Name="key_keylldotlldrop" SelectedIndex="0" MaxDropDownHeight="100"> 
+                                    </ComboBox>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">that button you press to drop items</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="21" Margin="10">
+                                    <TextBlock Text="Rebind inventory" 
+                                        HorizontalAlignment="Center"/>
+                                    <ComboBox Width="500" HorizontalAlignment="Center" Name="key_keylldotllinventory" SelectedIndex="0" MaxDropDownHeight="100"> 
+                                    </ComboBox>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">that button you press to open tha inventory</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="22" Margin="10">
+                                    <TextBlock Text="Rebind chat" 
+                                        HorizontalAlignment="Center"/>
+                                    <ComboBox Width="500" HorizontalAlignment="Center" Name="key_keylldotllchat" SelectedIndex="0" MaxDropDownHeight="100"> 
+                                    </ComboBox>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">that button you press to open ur chat</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="23" Margin="10">
+                                    <TextBlock Text="Rebind swapOffhand" 
+                                        HorizontalAlignment="Center"/>
+                                    <ComboBox Width="500" HorizontalAlignment="Center" Name="key_keylldotllswapOffhand" SelectedIndex="0" MaxDropDownHeight="100"> 
+                                    </ComboBox>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">that button you press to swap ur off-hand</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="24" Margin="10">
+                                    <Separator Padding="15" Background="#6f709c"/>
+                                    <TextBlock Text="Change the language" 
+                                            Padding="15"
+                                            FontSize="35"
+                                            HorizontalAlignment="Center"/>
+
+                                    <TextBlock Text="Language selector:" 
+                                        Padding="15"
+                                        HorizontalAlignment="Center"/>
+                                    <ComboBox Width="500" HorizontalAlignment="Center" Name="language" SelectedIndex="0" MaxDropDownHeight="350"> 
+                                    </ComboBox>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">good luck</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="25" Margin="10">
+                                    <Separator Padding="15" Background="#6f709c"/>
+                                    <TextBlock Text="Pehkui stuff" 
+                                            Padding="15"
+                                            FontSize="35"
+                                            HorizontalAlignment="Center"/>
+                                    <TextBlock Text="Base Scale" 
+                                        HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding ElementName=pehkuiDDbase, Path=Value, Converter={StaticResource precisionFix}}"
+                                        Margin="0, -15, 0, -15"
+                                        HorizontalAlignment="Right"/>
+                                    <Slider 
+                                        TickFrequency="0.05" 
+                                        IsSnapToTickEnabled="True" 
+                                        Maximum="100"
+                                        Minimum="0"
+                                        Value="1"
+                                        Name="pehkuiDDbase"/>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">base player size</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="26" Margin="10">
+                                    <TextBlock Text="Base Width" 
+                                        HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding ElementName=pehkuiDDwidth, Path=Value, Converter={StaticResource precisionFix}}"
+                                        Margin="0, -15, 0, -15"
+                                        HorizontalAlignment="Right"/>
+                                    <Slider 
+                                        TickFrequency="0.05" 
+                                        IsSnapToTickEnabled="True" 
+                                        Maximum="100"
+                                        Minimum="0"
+                                        Value="1"
+                                        Name="pehkuiDDwidth"/>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">base player width</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="27" Margin="10">
+                                    <TextBlock Text="Base Height" 
+                                        HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding ElementName=pehkuiDDheight, Path=Value, Converter={StaticResource precisionFix}}"
+                                        Margin="0, -15, 0, -15"
+                                        HorizontalAlignment="Right"/>
+                                    <Slider 
+                                        TickFrequency="0.05" 
+                                        IsSnapToTickEnabled="True" 
+                                        Maximum="100"
+                                        Minimum="0"
+                                        Value="1"
+                                        Name="pehkuiDDheight"/>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">base player height</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="28" Margin="10">
+                                    <TextBlock Text="Eye Height" 
+                                        HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding ElementName=pehkuiDDeye_height, Path=Value, Converter={StaticResource precisionFix}}"
+                                        Margin="0, -15, 0, -15"
+                                        HorizontalAlignment="Right"/>
+                                    <Slider 
+                                        TickFrequency="0.05" 
+                                        IsSnapToTickEnabled="True" 
+                                        Maximum="100"
+                                        Minimum="0"
+                                        Value="1"
+                                        Name="pehkuiDDeye_height"/>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">player's eye height</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="29" Margin="10">
+                                    <TextBlock Text="Hitobx Width" 
+                                        HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding ElementName=pehkuiDDhitbox_width, Path=Value, Converter={StaticResource precisionFix}}"
+                                        Margin="0, -15, 0, -15"
+                                        HorizontalAlignment="Right"/>
+                                    <Slider 
+                                        TickFrequency="0.05" 
+                                        IsSnapToTickEnabled="True" 
+                                        Maximum="100"
+                                        Minimum="0"
+                                        Value="1"
+                                        Name="pehkuiDDhitbox_width"/>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">player's hitbox width</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="30" Margin="10">
+                                    <TextBlock Text="Hitobx Height" 
+                                        HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding ElementName=pehkuiDDhitbox_height, Path=Value, Converter={StaticResource precisionFix}}"
+                                        Margin="0, -15, 0, -15"
+                                        HorizontalAlignment="Right"/>
+                                    <Slider 
+                                        TickFrequency="0.05" 
+                                        IsSnapToTickEnabled="True" 
+                                        Maximum="100"
+                                        Minimum="0"
+                                        Value="1"
+                                        Name="pehkuiDDhitbox_height"/>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">player's hitbox height</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="31" Margin="10">
+                                    <TextBlock Text="Jump Height" 
+                                        HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding ElementName=pehkuiDDjump_height, Path=Value, Converter={StaticResource precisionFix}}"
+                                        Margin="0, -15, 0, -15"
+                                        HorizontalAlignment="Right"/>
+                                    <Slider 
+                                        TickFrequency="0.05" 
+                                        IsSnapToTickEnabled="True" 
+                                        Maximum="100"
+                                        Minimum="0"
+                                        Value="1"
+                                        Name="pehkuiDDjump_height"/>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">player's jump height</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="32" Margin="10">
+                                    <TextBlock Text="Step Height" 
+                                        HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding ElementName=pehkuiDDstep_height, Path=Value, Converter={StaticResource precisionFix}}"
+                                        Margin="0, -15, 0, -15"
+                                        HorizontalAlignment="Right"/>
+                                    <Slider 
+                                        TickFrequency="0.05" 
+                                        IsSnapToTickEnabled="True" 
+                                        Maximum="100"
+                                        Minimum="0"
+                                        Value="1"
+                                        Name="pehkuiDDstep_height"/>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">player's step height</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="33" Margin="10">
+                                    <TextBlock Text="Reach distance" 
+                                        HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding ElementName=pehkuiDDreach, Path=Value, Converter={StaticResource precisionFix}}"
+                                        Margin="0, -15, 0, -15"
+                                        HorizontalAlignment="Right"/>
+                                    <Slider 
+                                        TickFrequency="0.05" 
+                                        IsSnapToTickEnabled="True" 
+                                        Maximum="50"
+                                        Minimum="0"
+                                        Value="1"
+                                        Name="pehkuiDDreach"/>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">player's reach distance</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="34" Margin="10">
+                                    <TextBlock Text="Block Reach" 
+                                        HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding ElementName=pehkuiDDblock_reach, Path=Value, Converter={StaticResource precisionFix}}"
+                                        Margin="0, -15, 0, -15"
+                                        HorizontalAlignment="Right"/>
+                                    <Slider 
+                                        TickFrequency="0.05" 
+                                        IsSnapToTickEnabled="True" 
+                                        Maximum="50"
+                                        Minimum="0"
+                                        Value="1"
+                                        Name="pehkuiDDblock_reach"/>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">player's block reach distance (must have operator privileges to use)</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="35" Margin="10">
+                                    <TextBlock Text="Entity Reach" 
+                                        HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding ElementName=pehkuiDDentity_reach, Path=Value, Converter={StaticResource precisionFix}}"
+                                        Margin="0, -15, 0, -15"
+                                        HorizontalAlignment="Right"/>
+                                    <Slider 
+                                        TickFrequency="0.05" 
+                                        IsSnapToTickEnabled="True" 
+                                        Maximum="50"
+                                        Minimum="0"
+                                        Value="1"
+                                        Name="pehkuiDDentity_reach"/>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">player's entity reach distance (must have operator privileges to use)</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="36" Margin="10">
+                                    <TextBlock Text="Mining Speed" 
+                                        HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding ElementName=pehkuiDDmining_speed, Path=Value, Converter={StaticResource precisionFix}}"
+                                        Margin="0, -15, 0, -15"
+                                        HorizontalAlignment="Right"/>
+                                    <Slider 
+                                        TickFrequency="0.05" 
+                                        IsSnapToTickEnabled="True" 
+                                        Maximum="100"
+                                        Minimum="0"
+                                        Value="1"
+                                        Name="pehkuiDDmining_speed"/>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">player's mining speed</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="37" Margin="10">
+                                    <TextBlock Text="Knockback" 
+                                        HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding ElementName=pehkuiDDknockback, Path=Value, Converter={StaticResource precisionFix}}"
+                                        Margin="0, -15, 0, -15"
+                                        HorizontalAlignment="Right"/>
+                                    <Slider 
+                                        TickFrequency="0.05" 
+                                        IsSnapToTickEnabled="True" 
+                                        Maximum="100"
+                                        Minimum="0"
+                                        Value="1"
+                                        Name="pehkuiDDknockback"/>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">player's knockback</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="38" Margin="10">
+                                    <TextBlock Text="Attack" 
+                                        HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding ElementName=pehkuiDDattack, Path=Value, Converter={StaticResource precisionFix}}"
+                                        Margin="0, -15, 0, -15"
+                                        HorizontalAlignment="Right"/>
+                                    <Slider 
+                                        TickFrequency="0.05" 
+                                        IsSnapToTickEnabled="True" 
+                                        Maximum="100"
+                                        Minimum="0"
+                                        Value="1"
+                                        Name="pehkuiDDattack"/>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">player's attack damage (must have operator privileges to use)</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="39" Margin="10">
+                                    <TextBlock Text="Defense" 
+                                        HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding ElementName=pehkuiDDdefense, Path=Value, Converter={StaticResource precisionFix}}"
+                                        Margin="0, -15, 0, -15"
+                                        HorizontalAlignment="Right"/>
+                                    <Slider 
+                                        TickFrequency="0.05" 
+                                        IsSnapToTickEnabled="True" 
+                                        Maximum="100"
+                                        Minimum="0"
+                                        Value="1"
+                                        Name="pehkuiDDdefense"/>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">player's defense damage  (must have operator privileges to use)</TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="40" Margin="10">
+                                    <TextBlock Text="Health" 
+                                        HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding ElementName=pehkuiDDhealth, Path=Value, Converter={StaticResource precisionFix}}"
+                                        Margin="0, -15, 0, -15"
+                                        HorizontalAlignment="Right"/>
+                                    <Slider 
+                                        TickFrequency="0.05" 
+                                        IsSnapToTickEnabled="True" 
+                                        Maximum="100"
+                                        Minimum="0"
+                                        Value="1"
+                                        Name="pehkuiDDhealth"/>
+                                    <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">player's health</TextBlock>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                </Panel>
+        </dialogHost:DialogHost>
+
+
+        <Design.DataContext>
+            <!-- This only sets the DataContext for the previewer in an IDE,
+                to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+            <vm:MainWindowViewModel/>
+        </Design.DataContext>
+    </ScrollViewer>
+</Window>
