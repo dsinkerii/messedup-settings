@@ -1,18 +1,14 @@
 package net.dsinkerii.mixin;
 
-import net.dsinkerii.GuiDraw;
-import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
-import net.minecraft.client.gui.screen.world.SelectWorldScreen;
 import net.minecraft.client.gui.tooltip.Tooltip;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.TextFieldWidget;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -24,13 +20,11 @@ import net.minecraft.client.util.Clipboard;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.security.NoSuchAlgorithmException;
-import java.util.function.Consumer;
 
 @Mixin(TitleScreen.class)
-public class ExampleMixin extends Screen {
+public class SettingsModMixin extends Screen {
 	TextFieldWidget server;
-	protected ExampleMixin (Text title) {
+	protected SettingsModMixin (Text title) {
 		super(title);
 	}
 
@@ -48,7 +42,7 @@ public class ExampleMixin extends Screen {
 		server.setText("tcp://mqtt.eclipseprojects.io:1883");
 		String path = String.valueOf(FabricLoader.getInstance().getGameDir());
 		try {
-			String serverFromFile = Files.readString(Path.of(path + "/server.txt"));
+			String serverFromFile = Files.readString(Path.of(FabricLoader.getInstance().getGameDir().resolve("server.txt").toString()));
 			if(!serverFromFile.isEmpty()){
 				server.setText(serverFromFile);
 			}
@@ -59,7 +53,7 @@ public class ExampleMixin extends Screen {
 		addDrawableChild(server);
 		ButtonWidget mqttserverbutton = this.addDrawableChild(ButtonWidget.builder(Text.literal("⇄"), (button) -> {
 			button.setTooltip(Tooltip.of(Text.literal("New MQTT Server set! Restart the game to apply changes.")));
-			File file = new File(path+"/server.txt");
+			File file = new File(FabricLoader.getInstance().getGameDir().resolve("server.txt").toString());
 			try (BufferedWriter br = new BufferedWriter(new FileWriter(file))) {
 				br.write(server.getText());
 			} catch (IOException e) {
@@ -70,11 +64,11 @@ public class ExampleMixin extends Screen {
 		mqttserverbutton.setTooltip(Tooltip.of(Text.literal("Sets the MQTT server, if you don't know what that is, better leave it unchanged")));
 
 		ButtonWidget backupbutton = this.addDrawableChild(ButtonWidget.builder(Text.literal("Restore settings from backup"), (button) -> {
-			Path pathOptions = Path.of(path + "/options-backup.txt");
+			Path pathOptions = Path.of(FabricLoader.getInstance().getGameDir().resolve("options-backup.txt").toString());
 			String file2 = null;
 			try {
 				file2 = Files.readString(pathOptions);
-				FileOutputStream fileOut = new FileOutputStream(path + "/options.txt");
+				FileOutputStream fileOut = new FileOutputStream(FabricLoader.getInstance().getGameDir().resolve("options.txt").toString());
 				fileOut.write(file2.getBytes());
 				fileOut.close();
 			} catch (IOException e) {
@@ -101,7 +95,7 @@ public class ExampleMixin extends Screen {
 					Clipboard clipboard = new Clipboard();
 					String path = String.valueOf(FabricLoader.getInstance().getGameDir());
 
-					String Password = Files.readString(Path.of(path+"/password.txt"));
+					String Password = Files.readString(Path.of(FabricLoader.getInstance().getGameDir().resolve("password.txt").toString()));
 
 					clipboard.setClipboard(0,Password);
 					if(button.getMessage().getString().equals("Copied!")){

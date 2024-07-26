@@ -46,6 +46,10 @@
               "target": "Package",
               "version": "[11.0.10, )"
             },
+            "Avalonia.Diagnostics": {
+              "target": "Package",
+              "version": "[11.0.10, )"
+            },
             "Avalonia.Fonts.Inter": {
               "target": "Package",
               "version": "[11.0.10, )"
@@ -84,7 +88,7 @@
               "version": "[8.0.5, 8.0.5]"
             },
             {
-              "name": "Microsoft.NETCore.App.Host.osx-x64",
+              "name": "Microsoft.NETCore.App.Host.linux-x64",
               "version": "[8.0.5, 8.0.5]"
             }
           ],
@@ -97,7 +101,7 @@
         }
       },
       "runtimes": {
-        "osx-x64": {
+        "linux-x64": {
           "#import": []
         }
       }

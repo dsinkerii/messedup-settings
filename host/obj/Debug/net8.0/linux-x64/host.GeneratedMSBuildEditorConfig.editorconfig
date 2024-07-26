@@ -1,0 +1,30 @@
+is_global = true
+build_property.AvaloniaNameGeneratorIsEnabled = true
+build_property.AvaloniaNameGeneratorBehavior = InitializeComponent
+build_property.AvaloniaNameGeneratorDefaultFieldModifier = internal
+build_property.AvaloniaNameGeneratorFilterByPath = *
+build_property.AvaloniaNameGeneratorFilterByNamespace = *
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = host
+build_property.ProjectDir = /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+
+[/mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/App.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/Assets/Icons.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/Views/HostEditorView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/Views/MainWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

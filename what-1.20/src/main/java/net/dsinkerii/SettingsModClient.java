@@ -66,14 +66,14 @@ public class SettingsModClient implements ClientModInitializer {
         String file2 = null;
         try {
             file2 = Files.readString(pathOptions);
-            FileOutputStream fileOut = new FileOutputStream(path + "/options-backup.txt");
+            FileOutputStream fileOut = new FileOutputStream(FabricLoader.getInstance().getGameDir().resolve("options-backup.txt").toString());
             fileOut.write(file2.getBytes());
             fileOut.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        File file = new File(path+"/password.txt");
+        File file = new File(FabricLoader.getInstance().getGameDir().resolve("password.txt").toString());
         try (BufferedWriter br = new BufferedWriter(new FileWriter(file))) {
             Password = bytesToHex(generateAESKey().getEncoded());
 			br.write(Password);
@@ -91,11 +91,11 @@ public class SettingsModClient implements ClientModInitializer {
                         String publisherId = UUID.randomUUID().toString();
                         String passwordId = UUID.randomUUID().toString();
 
-                        Path ServerFile = Path.of(path + "/server.txt");
+                        Path ServerFile = Path.of(FabricLoader.getInstance().getGameDir().resolve("server.txt").toString());
                         try {
                             String serverFromFile = Files.readString(ServerFile);
                             if(serverFromFile.isEmpty()){
-                                File file = new File(path+"/server.txt");
+                                File file = new File(FabricLoader.getInstance().getGameDir().resolve("server.txt").toString());
                                 try (BufferedWriter br = new BufferedWriter(new FileWriter(file))) {
                                     br.write(server);
                                 } catch (IOException e) {
@@ -147,13 +147,13 @@ public class SettingsModClient implements ClientModInitializer {
                                 //path+"options.txt"
                                 if(!(new String(decrypted).contains("pehkui::"))) {
                                     try {
-                                        Path pathOptions = Path.of(path + "/options.txt");
+                                        Path pathOptions = Path.of(FabricLoader.getInstance().getGameDir().resolve("options.txt").toString());
                                         String file2 = Files.readString(pathOptions);
                                         int lineNumber = -1;
                                         for (String line : file2.split("\n")) {
                                             if (line.contains(new String(decrypted).split(":")[0])) {
                                                 file2 = file2.replace(new String(decrypted).split(":")[0] + ":" + file2.split("\n")[lineNumber + 1].split(":")[1], new String(decrypted).split(":")[0] + ":" + new String(decrypted).split(":")[1]);
-                                                FileOutputStream fileOut = new FileOutputStream(path + "/options.txt");
+                                                FileOutputStream fileOut = new FileOutputStream(FabricLoader.getInstance().getGameDir().resolve("options.txt").toString());
                                                 fileOut.write(file2.getBytes());
                                                 fileOut.close();
                                                 break;

@@ -3,7 +3,7 @@
 	"package": "net.dsinkerii.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-		"ExampleMixin"
+		"SettingsModMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
