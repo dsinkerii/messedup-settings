@@ -1,8 +1,10 @@
 # messedup-settings
 https://youtu.be/qbOCx4pdUnQ
 
-# updaet 6:
-  there yall go! no more python shenanigans, since its rewritten to c# now! just launch the exe and now it just... works!
+# updaet 7:
+  i got burnt out of workin on this project sorry
+  thanks for all tha support from yahiamice & yall, but i dont really find it enjoyable working on this project no more since it was simply just an experiment ❤️‍🔥
+  
 
 # Additional info...
 
