@@ -88,36 +88,44 @@ namespace host.Views
                 builder.WithSubscription("1.20settingsmodv1.3", QualityOfService.AtLeastOnceDelivery);
                 var subscribeOptions = builder.Build();
                 var subscribeResult = await mqttClient.SubscribeAsync(subscribeOptions);
-                Console.WriteLine($"Connected result: {connectResult}\nSubscribe options:{subscribeOptions}\nSubscription result:{subscribeResult}");
+                CustomLogger.Log($"Connected result: {connectResult}\nSubscribe options:{subscribeOptions}\nSubscription result:{subscribeResult}");
             }
             catch (Exception ex){
-                Console.WriteLine($"Connection failed: {ex.Message}");
+                CustomLogger.Log($"Connection failed: {ex.Message}");
+            }
+        }
+        public void GetLogs(object sender, Avalonia.Interactivity.RoutedEventArgs e) {
+            try 
+            {
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                {
+                    FileName = CustomLogger.LogFilePath,
+                    UseShellExecute = true
+                });
+            }
+            catch (Exception ex)
+            {
+                CustomLogger.Log($"Failed to open log file: {ex.Message}");
             }
         }
 
         // SLIDERSS!!!
         public void SendModifiedMqtt(object sender, Avalonia.Input.PointerReleasedEventArgs e) {
-            Console.WriteLine($"Sending message...");
+            CustomLogger.Log($"Sending message...");
             double value = ((Slider) sender).Value;
-            // proccess the slider, if it has a special ruleset
-            foreach(var ruleset in SlidersWithSpecials){
-                if(ruleset.Name == ((Slider) sender).Name){
-                    value = (value + ruleset.Adder) * ruleset.Multiplier;
-                    break;
-                }
-            }
+            
             string newname = ((Slider) sender).Name.Replace("DD","::");
             SendMessage(newname, $"{value}");
         }
 
         // TOGGLES!!
         public void SendModifiedMqttToggle(object sender, RoutedEventArgs e) {
-            Console.WriteLine($"Sending message...");
+            CustomLogger.Log($"Sending message...");
             string value = (((ToggleButton) sender).IsChecked.ToString()).ToLower();
             SendMessage($"{((ToggleButton) sender).Name}", value);
         }
         public void SendModifiedMqttCombo(object sender, Avalonia.Controls.SelectionChangedEventArgs e) {
-            Console.WriteLine($"Sending message...");
+            CustomLogger.Log($"Sending message...");
             string newname = ((ComboBox) sender).Name.Replace("lldotll",".");
             if(newname != "language"){
                 string value = RegisterInputs.keybinds[((ComboBox) sender).SelectedIndex];
@@ -132,7 +140,7 @@ namespace host.Views
         private async void SendMessage(string from, string content){
             if(_PwdTextBox != null){
                 if(_PwdTextBox.Text == null){
-                    Console.WriteLine("No password!!");
+                    CustomLogger.Log("No password!!");
                     _NoPwdDialog.IsOpen = true;
                     return;
                 }
@@ -141,10 +149,10 @@ namespace host.Views
 
                 if(encrypted != null || encrypted != ""){
                     var publishResult = await mqttClient.PublishAsync("1.20settingsmodv1.3", encrypted);
-                    Console.WriteLine($"Message content: {raw} (encrypred: {encrypted})");
-                    Console.WriteLine($"Message status: {publishResult.ReasonCode()}");
+                    CustomLogger.Log($"Message content: {raw} (encrypred: {encrypted})");
+                    CustomLogger.Log($"Message status: {publishResult.ReasonCode()}");
                 }else{
-                    Console.WriteLine("bad password!!");
+                    CustomLogger.Log("bad password!!");
                     _NoPwdDialog.IsOpen = true;
                 }
             }

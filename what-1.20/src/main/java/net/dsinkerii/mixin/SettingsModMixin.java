@@ -1,5 +1,7 @@
 package net.dsinkerii.mixin;
 
+import net.dsinkerii.SettingsModClient;
+import net.minecraft.client.render.VertexConsumerProvider;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
@@ -9,6 +11,7 @@ import net.minecraft.client.gui.screen.TitleScreen;
 import net.minecraft.client.gui.tooltip.Tooltip;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.TextFieldWidget;
+import net.minecraft.client.gui.widget.TextWidget;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -24,13 +27,18 @@ import java.nio.file.Path;
 @Mixin(TitleScreen.class)
 public class SettingsModMixin extends Screen {
 	TextFieldWidget server;
+	@Unique
+	private TextWidget statusSymbolWidget;
+	@Unique
+	private ButtonWidget statusButton;
+	
 	protected SettingsModMixin (Text title) {
 		super(title);
 	}
 
 	@Inject(at = @At("RETURN"), method = "initWidgetsNormal")
 	private void addModsButton(int y, int spacingY, CallbackInfo ci) {
-		this.addDrawableChild(ButtonWidget.builder(Text.literal("Get MQTT Password (settings mod)"), (button) -> {
+		this.addDrawableChild(ButtonWidget.builder(Text.literal("Get Password (settings mod 1.4)"), (button) -> {
 			Copied(button);
 		}).dimensions(0, this.height-60, 200, 20).build());
 		TextRenderer renderer = MinecraftClient.getInstance().textRenderer;
@@ -52,36 +60,60 @@ public class SettingsModMixin extends Screen {
 		server.setEditableColor(0xFFFF);
 		addDrawableChild(server);
 		ButtonWidget mqttserverbutton = this.addDrawableChild(ButtonWidget.builder(Text.literal("⇄"), (button) -> {
-			button.setTooltip(Tooltip.of(Text.literal("New MQTT Server set! Restart the game to apply changes.")));
-			File file = new File(FabricLoader.getInstance().getGameDir().resolve("server.txt").toString());
-			try (BufferedWriter br = new BufferedWriter(new FileWriter(file))) {
-				br.write(server.getText());
-			} catch (IOException e) {
-
-			}
+			ServerChanged(button);
 		}).dimensions(181, this.height-85, 20, 20).build());
 
-		mqttserverbutton.setTooltip(Tooltip.of(Text.literal("Sets the MQTT server, if you don't know what that is, better leave it unchanged")));
+		mqttserverbutton.setTooltip(Tooltip.of(Text.literal("Sets the MQTT server and reconnects immediately")));
 
-		ButtonWidget backupbutton = this.addDrawableChild(ButtonWidget.builder(Text.literal("Restore settings from backup"), (button) -> {
-			Path pathOptions = Path.of(FabricLoader.getInstance().getGameDir().resolve("options-backup.txt").toString());
-			String file2 = null;
-			try {
-				file2 = Files.readString(pathOptions);
-				FileOutputStream fileOut = new FileOutputStream(FabricLoader.getInstance().getGameDir().resolve("options.txt").toString());
-				fileOut.write(file2.getBytes());
-				fileOut.close();
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-			BackedUp(button);
-		}).dimensions(0, this.height - 35, 200, 20).build());
-		backupbutton.setTooltip(Tooltip.of(Text.literal("Replaces current options.txt file with options-backup.txt, made when you have started the game")));
+		MinecraftClient mc = MinecraftClient.getInstance();
+
+		statusSymbolWidget = new TextWidget(203, this.height - 35, 10, 20, Text.literal("⬛").withColor(0xFFB30BFF), mc.textRenderer);
+		this.addDrawableChild(statusSymbolWidget);
+
+		statusButton = ButtonWidget.builder(Text.literal("server hasn't begun connecting yet."), (button) -> {
+		}).dimensions(0, this.height - 35, 200, 20).build();
+		
+		statusButton.active = false;
+		this.addDrawableChild(statusButton);
 	}
 	@Unique
 	public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-		server.renderButton(context, mouseX, mouseY, delta);
 		super.render(context, mouseX, mouseY, delta);
+		server.render(context, mouseX, mouseY, delta);
+		
+		// Update status widgets
+		updateStatusWidgets();
+	}
+
+	@Unique
+	private void updateStatusWidgets() {
+		if (statusSymbolWidget == null || statusButton == null) return;
+		
+		String statusSymbol = "⬛";
+		int statusColor = 0xFFB30BFF;
+		String statusText = "server hasn't begun connecting yet.";
+
+		switch(SettingsModClient.IsConnectedAtMainMenu){
+			case 0:
+				statusColor = 0xFFFFB30B;
+				statusText = "server hasn't begun connecting yet.";
+				break;
+			case 1:
+				statusColor = 0xFF44ff0b;
+				statusText = "connected to the server!";
+				break;
+			case 2:
+				statusColor = 0xFFff340b;
+				statusText = "couldn't connect to the server.";
+				break;
+			default:
+				statusColor = 0xFFFFFFFF;
+				statusText = "cant get info on server status.";
+				break;
+		}
+
+		statusSymbolWidget.setMessage(Text.literal(statusSymbol).withColor(statusColor));
+		statusButton.setMessage(Text.literal(statusText));
 	}
 
 	@Unique
@@ -116,9 +148,9 @@ public class SettingsModMixin extends Screen {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                //more code here.
+					throw new RuntimeException(e);
+				}
+				//more code here.
 			}
 		}.start();
 	}
@@ -129,7 +161,6 @@ public class SettingsModMixin extends Screen {
 		{
 			public void run()
 			{
-				//some code here.
 				try {
 					if(button.getMessage().getString().equals("Reverted!")){
 						return;
@@ -149,9 +180,43 @@ public class SettingsModMixin extends Screen {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				//more code here.
 			}
 		}.start();
 	}
 
+	@Unique
+	private void ServerChanged(ButtonWidget button) {
+		new Thread()
+		{
+			public void run()
+			{
+				try {
+					File file = new File(FabricLoader.getInstance().getGameDir().resolve("server.txt").toString());
+					try (BufferedWriter br = new BufferedWriter(new FileWriter(file))) {
+						br.write(server.getText());
+					} catch (IOException e) {
+						e.printStackTrace();
+						return;
+					}
+
+					SettingsModClient.reconnectMqtt();
+
+					if(button.getMessage().getString().contains("Reconnecting")){
+						return;
+					}else{
+						button.setMessage(Text.literal("Reconnecting..."));
+						Thread.sleep(2000);
+						button.setMessage(Text.literal("⇄"));
+					}
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}.start();
+	}
+
+	@Inject(at = @At("HEAD"), method = "tick")
+	private void onTick(CallbackInfo ci) {
+		updateStatusWidgets();
+	}
 }

@@ -1,4 +1,8 @@
 is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = true
+build_property.EnableTrimAnalyzer = 
+build_property.IncludeAllContentForSelfExtract = 
 build_property.AvaloniaNameGeneratorIsEnabled = true
 build_property.AvaloniaNameGeneratorBehavior = InitializeComponent
 build_property.AvaloniaNameGeneratorDefaultFieldModifier = internal
@@ -16,6 +20,8 @@ build_property.RootNamespace = host
 build_property.ProjectDir = /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
 
 [/mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

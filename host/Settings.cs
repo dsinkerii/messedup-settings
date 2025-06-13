@@ -8,7 +8,7 @@ public static class Settings{
         public string Nickname { get; set; }
     }
 
-    private static readonly string SettingsFilePath = "appsettings.json";
+    private static readonly string SettingsFilePath = ".appsettings.json";
     private static void UpdateSettings(AppSettings settings){
         var options = new JsonSerializerOptions { WriteIndented = true };
         string currentDirectory = Directory.GetCurrentDirectory();
@@ -17,8 +17,7 @@ public static class Settings{
         Console.WriteLine($"Update on {Path.Join(currentDirectory, SettingsFilePath)}");
 
         File.WriteAllText(Path.Join(currentDirectory, SettingsFilePath), jsonString);
-    }
-    public static void SaveMqttNameSettings(string Server){
+    }    public static void SaveMqttNameSettings(string Server){
         AppSettings settings = LoadSettings();
         settings.MqttServer = Server;
         UpdateSettings(settings);

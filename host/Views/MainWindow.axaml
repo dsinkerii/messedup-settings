@@ -20,7 +20,7 @@
 
     <ScrollViewer>
         <!-- no password prompt -->
-        <dialogHost:DialogHost Name="mqttnopwd" CloseOnClickAway="True">
+        <dialogHost:DialogHost Name="mqttnopwd" CloseOnClickAway="True" VerticalAlignment="Top" >
             <dialogHost:DialogHost.DialogContent>
                 <StackPanel>
                     <TextBlock Padding="20" TextAlignment="Center" FontSize="25" Text="MQTT password invalid!! (empty or incorrect)" HorizontalAlignment="Center"/>
@@ -53,15 +53,21 @@
                                 FontSize="30"
                                 Foreground="#d4d8eb"
                             />
-                            <TextBlock 
-                                Text="host version: v1.3"
-                                FontFamily="{StaticResource NAMU}"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                TextAlignment="Center"
-                                FontSize="10"
-                                Foreground="#96969b"
-                            />
+                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                                <TextBlock 
+                                    Text="host version: v1.4"
+                                    FontFamily="{StaticResource NAMU}"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    TextAlignment="Center"
+                                    FontSize="20"
+                                    Foreground="#96969b"
+                                />
+                                
+                                <Button Margin="20 0 0 0" Height="25" VerticalAlignment="Center" Width="25" Click="GetLogs">
+                                    <PathIcon Classes="clipboard_regular" Data="{StaticResource clipboard_regular}" />
+                                </Button>
+                            </StackPanel>
                             <Border
                                 CornerRadius="20"
                                 Background="#1e2037"
@@ -97,54 +103,11 @@
                     </Border>
                     <Border Padding="200">
                         <StackPanel>
-                            <TextBlock Text="Graphics and gameplay stuffs" 
+                            <TextBlock Text="Graphics and gameplay" 
                                         Padding="15"
                                         FontSize="35"
                                         HorizontalAlignment="Center"/>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
+                            <StackPanel>
 
                                 <StackPanel Grid.Row="0" Margin="10">
                                     <TextBlock Text="Field Of View" 
@@ -344,7 +307,7 @@
                                     <Slider 
                                         TickFrequency="1" 
                                         IsSnapToTickEnabled="True" 
-                                        Maximum="100"
+                                        Maximum="500"
                                         Minimum="0"
                                         Value="10"
                                         Name="chatScale"/>
@@ -693,7 +656,7 @@
                                         Name="pehkuiDDhealth"/>
                                     <TextBlock Margin="0 5" HorizontalAlignment="Center" Foreground="#96969b">player's health</TextBlock>
                                 </StackPanel>
-                            </Grid>
+                            </StackPanel>
                         </StackPanel>
                     </Border>
                 </Panel>

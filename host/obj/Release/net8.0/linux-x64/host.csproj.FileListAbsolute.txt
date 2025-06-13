@@ -53,9 +53,9 @@
 /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/obj/Release/net8.0/linux-x64/refint/host.dll
 /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/obj/Release/net8.0/linux-x64/host.dll
 /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/obj/Release/net8.0/linux-x64/host.pdb
-/mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/obj/Release/net8.0/linux-x64/host.csproj.CopyComplete
 /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/obj/Release/net8.0/linux-x64/host.genruntimeconfig.cache
 /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/obj/Release/net8.0/linux-x64/ref/host.dll
+/mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/obj/Release/net8.0/linux-x64/host.csproj.Up2Date
 /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/bin/Release/net8.0/linux-x64/Microsoft.CSharp.dll
 /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/bin/Release/net8.0/linux-x64/Microsoft.VisualBasic.Core.dll
 /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/bin/Release/net8.0/linux-x64/Microsoft.VisualBasic.dll

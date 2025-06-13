@@ -1,0 +1,68 @@
+[23:49:57, frame 1] -- Log -- {
+      - Log message: "Update on /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/.appsettings.json"
+      - Log path:
+> at System.Environment.get_StackTrace()
+-> at CustomLogger.LoggingTextWriter.WriteLine(String value) in /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/Views/Logger.cs:line 126
+--> at System.IO.TextWriter.SyncTextWriter.WriteLine(String value)
+---> at System.Console.WriteLine(String value)
+----> at Settings.UpdateSettings(AppSettings settings) in /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/Settings.cs:line 17
+-----> at Settings.SaveMqttNameSettings(String Server) in /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/Settings.cs:line 23
+------> at host.Views.MainWindow.OnTextBoxTextChanged(Object sender, RoutedEventArgs e) in /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/Views/MainWindow.axaml.cs:line 165
+-------> at Avalonia.Interactivity.Interactive.<AddHandler>g__InvokeAdapter|4_0[TEventArgs](Delegate baseHandler, Object sender, RoutedEventArgs args)
+--------> at Avalonia.Interactivity.Interactive.<>c__4`1.<AddHandler>b__4_1(Delegate baseHandler, Object sender, RoutedEventArgs args)
+---------> at Avalonia.Interactivity.EventRoute.RaiseEventImpl(RoutedEventArgs e)
+----------> at Avalonia.Interactivity.EventRoute.RaiseEvent(Interactive source, RoutedEventArgs e)
+-----------> at Avalonia.Interactivity.Interactive.RaiseEvent(RoutedEventArgs e)
+------------> at Avalonia.Controls.TextBox.<RaiseTextChangeEvents>b__217_0()
+-------------> at Avalonia.Threading.DispatcherOperation.InvokeCore()
+--------------> at Avalonia.Threading.DispatcherOperation.Execute()
+---------------> at Avalonia.Threading.Dispatcher.ExecuteJob(DispatcherOperation job)
+----------------> at Avalonia.Threading.Dispatcher.ExecuteJobsCore(Boolean fromExplicitBackgroundProcessingCallback)
+-----------------> at Avalonia.Threading.Dispatcher.OnOSTimer()
+------------------> at Avalonia.X11.X11PlatformThreading.RunLoop(CancellationToken cancellationToken)
+-------------------> at Avalonia.Threading.DispatcherFrame.Run(IControlledDispatcherImpl impl)
+--------------------> at Avalonia.Threading.Dispatcher.PushFrame(DispatcherFrame frame)
+---------------------> at Avalonia.Threading.Dispatcher.MainLoop(CancellationToken cancellationToken)
+----------------------> at Avalonia.Controls.ApplicationLifetimes.ClassicDesktopStyleApplicationLifetime.Start(String[] args)
+-----------------------> at Avalonia.ClassicDesktopStyleApplicationLifetimeExtensions.StartWithClassicDesktopLifetime(AppBuilder builder, String[] args, Action`1 lifetimeBuilder)
+------------------------> at host.Program.Main(String[] args) in /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/Program.cs:line 13
+}
+
+[23:49:57, frame 2] -- Log -- {
+      - Log message: "Update on /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/.appsettings.json"
+      - Log path:
+> at System.Environment.get_StackTrace()
+-> at CustomLogger.LoggingTextWriter.WriteLine(String value) in /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/Views/Logger.cs:line 126
+--> at System.IO.TextWriter.SyncTextWriter.WriteLine(String value)
+---> at System.Console.WriteLine(String value)
+----> at Settings.UpdateSettings(AppSettings settings) in /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/Settings.cs:line 17
+-----> at Settings.SaveNickNameSettings(String Server) in /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/Settings.cs:line 28
+------> at host.Views.MainWindow.OnTextBoxTextChanged(Object sender, RoutedEventArgs e) in /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/Views/MainWindow.axaml.cs:line 167
+-------> at Avalonia.Interactivity.Interactive.<AddHandler>g__InvokeAdapter|4_0[TEventArgs](Delegate baseHandler, Object sender, RoutedEventArgs args)
+--------> at Avalonia.Interactivity.Interactive.<>c__4`1.<AddHandler>b__4_1(Delegate baseHandler, Object sender, RoutedEventArgs args)
+---------> at Avalonia.Interactivity.EventRoute.RaiseEventImpl(RoutedEventArgs e)
+----------> at Avalonia.Interactivity.EventRoute.RaiseEvent(Interactive source, RoutedEventArgs e)
+-----------> at Avalonia.Interactivity.Interactive.RaiseEvent(RoutedEventArgs e)
+------------> at Avalonia.Controls.TextBox.<RaiseTextChangeEvents>b__217_0()
+-------------> at Avalonia.Threading.DispatcherOperation.InvokeCore()
+--------------> at Avalonia.Threading.DispatcherOperation.Execute()
+---------------> at Avalonia.Threading.Dispatcher.ExecuteJob(DispatcherOperation job)
+----------------> at Avalonia.Threading.Dispatcher.ExecuteJobsCore(Boolean fromExplicitBackgroundProcessingCallback)
+-----------------> at Avalonia.Threading.Dispatcher.OnOSTimer()
+------------------> at Avalonia.X11.X11PlatformThreading.RunLoop(CancellationToken cancellationToken)
+-------------------> at Avalonia.Threading.DispatcherFrame.Run(IControlledDispatcherImpl impl)
+--------------------> at Avalonia.Threading.Dispatcher.PushFrame(DispatcherFrame frame)
+---------------------> at Avalonia.Threading.Dispatcher.MainLoop(CancellationToken cancellationToken)
+----------------------> at Avalonia.Controls.ApplicationLifetimes.ClassicDesktopStyleApplicationLifetime.Start(String[] args)
+-----------------------> at Avalonia.ClassicDesktopStyleApplicationLifetimeExtensions.StartWithClassicDesktopLifetime(AppBuilder builder, String[] args, Action`1 lifetimeBuilder)
+------------------------> at host.Program.Main(String[] args) in /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/Program.cs:line 13
+}
+
+[23:49:58, frame 3] -- Log -- {
+      - Log message: "Connected result: ConnectResult[Code: Success]: SessionPresent: False, SessionExpiryInterval: 300, MaximumQoS: 2, RetainAvailable: True, TopicAliasMaximum: 10, BrokerReceiveMaximum: 20
+Subscribe options:HiveMQtt.Client.Options.SubscribeOptions
+Subscription result:HiveMQtt.Client.Results.SubscribeResult"
+      - Log path:
+> No stack trace available.
+}
+

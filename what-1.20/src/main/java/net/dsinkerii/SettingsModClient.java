@@ -1,67 +1,47 @@
 package net.dsinkerii;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.KeySpec;
 import java.util.UUID;
-import java.util.stream.Stream;
+import java.util.Base64;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
-import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
-import net.minecraft.client.gui.screen.option.GameOptionsScreen;
+import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import org.eclipse.paho.client.mqttv3.*;
 
-import com.mojang.authlib.minecraft.client.MinecraftClient;
-
-import java.util.Arrays;
-import java.util.Base64;
-
 import net.fabricmc.api.ClientModInitializer;
-//import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
-//import net.fabricmc.fabric.api.event.player.AttackBlockCallback;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.text.Text;
-import org.lwjgl.glfw.GLFW;
 
 public class SettingsModClient implements ClientModInitializer {
     public String Text2 = "s";
     public String Password;
     public String server = "tcp://mqtt.eclipseprojects.io:1883";
-    //private net.minecraft.client.MinecraftClient client;
+    public static int IsConnectedAtMainMenu = 0;
+    
+    // Add these fields for connection management
+    private static MqttClient mqttClient;
+    private static Thread mqttThread;
+    private static volatile boolean shouldReconnect = false;
+    
     @Override
     public void onInitializeClient() {
 
         HudRenderCallback.EVENT.register((drawContext, tickDelta) -> {
-            GuiDraw.renderGui(drawContext, tickDelta,Text2,false,"", "");
+            GuiDraw.renderGui(drawContext, tickDelta.getTickDelta(false), Text2, false, "", "");
         });
+        
         String path = String.valueOf(FabricLoader.getInstance().getGameDir());
 
-        // backup before starting
-
+        // backup before starting (keep this for safety)
         Path pathOptions = Path.of(path + "/options.txt");
         String file2 = null;
         try {
@@ -76,21 +56,32 @@ public class SettingsModClient implements ClientModInitializer {
         File file = new File(FabricLoader.getInstance().getGameDir().resolve("password.txt").toString());
         try (BufferedWriter br = new BufferedWriter(new FileWriter(file))) {
             Password = bytesToHex(generateAESKey().getEncoded());
-			br.write(Password);
-		} catch (IOException e) {
-            // TODO Auto-generated catch block
+            br.write(Password);
+        } catch (IOException e) {
             e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            // TODO Auto-generated catch block
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        Thread thread = new Thread("Setup MQTT"){
-            public void run(){
-                    System.out.println("attempting to connect...");
-                    try {
-                        String publisherId = UUID.randomUUID().toString();
-                        String passwordId = UUID.randomUUID().toString();
+        
+        startMqttConnection();
+    }
 
+    public void startMqttConnection() {
+        mqttThread = new Thread("Setup MQTT"){
+            public void run(){
+                while (true) {
+                    System.out.println("attempting to connect...");
+                    IsConnectedAtMainMenu = 0;
+                    shouldReconnect = false;
+                    
+                    try {
+                        //disconnect existing connection if any
+                        if (mqttClient != null && mqttClient.isConnected()) {
+                            mqttClient.disconnect();
+                            mqttClient.close();
+                        }
+                        
+                        //read server from file
                         Path ServerFile = Path.of(FabricLoader.getInstance().getGameDir().resolve("server.txt").toString());
                         try {
                             String serverFromFile = Files.readString(ServerFile);
@@ -99,14 +90,17 @@ public class SettingsModClient implements ClientModInitializer {
                                 try (BufferedWriter br = new BufferedWriter(new FileWriter(file))) {
                                     br.write(server);
                                 } catch (IOException e) {
-
+                                    // Handle exception
                                 }
                             }else{
                                 server = serverFromFile;
                             }
                         }catch (java.nio.file.NoSuchFileException e) {}
 
-                        MqttClient sampleClient = new MqttClient(server, publisherId);
+                        String publisherId = UUID.randomUUID().toString();
+                        String passwordId = UUID.randomUUID().toString();
+
+                        mqttClient = new MqttClient(server, publisherId);
                         MqttConnectOptions options = new MqttConnectOptions();
                         options.setAutomaticReconnect(true);
                         options.setCleanSession(true);
@@ -114,12 +108,14 @@ public class SettingsModClient implements ClientModInitializer {
                         options.setPassword(passwordId.toCharArray());
                         options.setConnectionTimeout(10);
                         String Topic = "1.20settingsmodv1.3";
-                        sampleClient.setCallback(new MqttCallback() {
+                        
+                        mqttClient.setCallback(new MqttCallback() {
                             public void connectionLost(Throwable cause) {
                                 System.out.println("connectionLost: " + cause.getMessage() + cause.getCause());
                                 Text2 = "§4§lLost connection: "+ cause.getMessage() + "\n\n§l§4" + cause.getCause();
+                                IsConnectedAtMainMenu = 2;
                             }
-                        
+
                             public void messageArrived(String topic, MqttMessage message) {
                                 String decrypted = "";
                                 String username = "";
@@ -131,69 +127,92 @@ public class SettingsModClient implements ClientModInitializer {
                                 }catch(Exception e) {
                                     System.out.println("Unable to decrypt, is someone else playing rn?");
                                 }
+                                
                                 String DisplayDecrypted = decrypted.replace("pehkui::","");
                                 System.out.println(new String(DisplayDecrypted).length());
-                                if(!Text2.contains(new String(DisplayDecrypted).split(":")[0]) && new String(DisplayDecrypted).length() != 0){
-                                    Text2 += "\n§6>:§f " + DisplayDecrypted + "\n";
-                                }else{
-                                    if(new String(DisplayDecrypted).length() != 0){
-                                        System.out.println(new String(DisplayDecrypted).split(":")[0] + Text2.split(new String(DisplayDecrypted).split(":")[0])[1].split("\n")[0]);
-                                        System.out.println(new String(DisplayDecrypted));
-                                        System.out.println(Text2.replace(new String(DisplayDecrypted).split(":")[0] + Text2.split(new String(DisplayDecrypted).split(":")[0])[1].split("\n")[0], new String(DisplayDecrypted)));
-                                        Text2 = Text2.replace(new String(DisplayDecrypted).split(":")[0] + Text2.split(new String(DisplayDecrypted).split(":")[0])[1].split("\n")[0], new String(DisplayDecrypted));
-                                    }
-                                    //Text2 = Text2.replace(new String(decrypted).split(":")[0] + ":" + Text2.split(new String(decrypted).split(":")[0])[1].split("\n")[0], new String(decrypted).split(":")[0] + ":" + new String(decrypted).split(":")[1]);
-                                }
-                                //path+"options.txt"
-                                if(!(new String(decrypted).contains("pehkui::"))) {
-                                    try {
-                                        Path pathOptions = Path.of(FabricLoader.getInstance().getGameDir().resolve("options.txt").toString());
-                                        String file2 = Files.readString(pathOptions);
-                                        int lineNumber = -1;
-                                        for (String line : file2.split("\n")) {
-                                            if (line.contains(new String(decrypted).split(":")[0])) {
-                                                file2 = file2.replace(new String(decrypted).split(":")[0] + ":" + file2.split("\n")[lineNumber + 1].split(":")[1], new String(decrypted).split(":")[0] + ":" + new String(decrypted).split(":")[1]);
-                                                FileOutputStream fileOut = new FileOutputStream(FabricLoader.getInstance().getGameDir().resolve("options.txt").toString());
-                                                fileOut.write(file2.getBytes());
-                                                fileOut.close();
-                                                break;
-                                            }
-                                            lineNumber++;
+
+                                if(new String(DisplayDecrypted).length() != 0){
+                                    String settingName = DisplayDecrypted.split(":")[0];
+                                    String newValue = DisplayDecrypted.substring(settingName.length() + 1);
+
+                                    String[] lines = Text2.split("\n");
+                                    boolean found = false;
+                                    StringBuilder newText = new StringBuilder();
+                                    
+                                    for (String line : lines) {
+                                        if (line.contains(">:§f " + settingName + ":")) {
+                                            newText.append("§6["+username+"] >:§f ").append(DisplayDecrypted).append("\n");
+                                            found = true;
+                                        } else {
+                                            newText.append(line).append("\n");
                                         }
-                                    } catch (Exception e) {
-                                        System.out.println("Problem reading file: " + e);
                                     }
+                                    
+                                    if (!found) {
+                                        newText.append("§6["+username+"] >:§f ").append(DisplayDecrypted);
+                                    }
+                                    
+                                    Text2 = newText.toString();
                                 }
+                                
+                                // REMOVED FILE MODIFICATION - now using runtime settings only
                                 if(new String(decrypted).length() != 0){
-                                    System.out.println(decrypted);
-                                    GuiDraw.renderGui(null, 0,Text2,true, decrypted, username);
+                                    System.out.println("Processing setting update: " + decrypted);
+                                    GuiDraw.renderGui(null, 0, Text2, true, decrypted, username);
                                 }
                             }
-                        
+
                             public void deliveryComplete(IMqttDeliveryToken token) {
-                                // Implement your logic for delivery completion here
                             }
                         });
-                        sampleClient.connect(options);
-                        sampleClient.subscribe(Topic, 0);
+                        
+                        mqttClient.connect(options);
+                        mqttClient.subscribe(Topic, 0);
                         Text2 = "Connected to MQTT!\n\nServer§6: " + server + "§f\n";
-                        System.out.println("contnected to MQTT...");
+                        System.out.println("connected to MQTT...");
+                        IsConnectedAtMainMenu = 1;
+                        
+                        // Wait for reconnection signal
+                        while (!shouldReconnect && mqttClient.isConnected()) {
+                            Thread.sleep(1000);
+                        }
+                        
                     }catch(MqttException me) {
-                        System.out.println("not contnected to MQTT...");
+                        System.out.println("not connected to MQTT...");
+                        IsConnectedAtMainMenu = 2;
                         System.out.println(me);
                         Text2 = "Not connected to MQTT... Error message: " + me;
-                    } catch (IOException e) {
+                        
+                        // wait before retrying if not a manual reconnect
+                        if (!shouldReconnect) {
+                            try {
+                                Thread.sleep(5000);
+                            } catch (InterruptedException ie) {
+                                break;
+                            }
+                        }
+                    } catch (IOException | InterruptedException e) {
                         throw new RuntimeException(e);
                     }
-                String Topic = "SettingsMod 1.20";
-                    //IMqttClient publisher = new MqttClient("tcp://iot.eclipse.org:1883",publisherId);
-                    //while(true){
-                    //}
                 }
-
+            }
         };
-        thread.start();
+        mqttThread.start();
     }
+
+    public static void reconnectMqtt() {
+        shouldReconnect = true;
+        if (mqttClient != null) {
+            try {
+                if (mqttClient.isConnected()) {
+                    mqttClient.disconnect();
+                }
+            } catch (MqttException e) {
+                System.out.println("Error disconnecting MQTT client: " + e.getMessage());
+            }
+        }
+    }
+    
     public static String decrypt(String encryptedText, String Password) throws Exception {
         SecretKeySpec secretKeySpec = new SecretKeySpec(Password.getBytes(), "AES");
         Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
@@ -201,11 +220,13 @@ public class SettingsModClient implements ClientModInitializer {
         byte[] decryptedBytes = cipher.doFinal(Base64.getDecoder().decode(encryptedText));
         return new String(decryptedBytes);
     }
-    public static SecretKey generateAESKey() throws NoSuchAlgorithmException {
+    
+    public static SecretKey generateAESKey() throws Exception {
         KeyGenerator keyGen = KeyGenerator.getInstance("AES");
-        keyGen.init(128); // You can use 128, 192, or 256 bits key size for AES
+        keyGen.init(128);
         return keyGen.generateKey();
     }
+    
     private static String bytesToHex(byte[] bytes) {
         StringBuilder result = new StringBuilder();
         for (byte b : bytes) {
@@ -213,6 +234,4 @@ public class SettingsModClient implements ClientModInitializer {
         }
         return result.toString();
     }
-    
-
 }
