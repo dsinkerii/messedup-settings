@@ -1,10 +1,10 @@
 # messedup-settings
 https://youtu.be/qbOCx4pdUnQ
 
-# update 8:
-  i matured
+# update 9:
+   also available on modrinth!
 
-  also i unarchived the repo and plan on fixing a bunch of old repos i made over the years
+   https://modrinth.com/mod/messed-up-settings
   
 # ‼️ READ BEFORE INSTALLING ‼️
 
