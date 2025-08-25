@@ -40,7 +40,7 @@ every time you reboot your game, your password changes, so in case it gets leake
 - launching the game using a different launcher (prism launcher or the default launcher work the best)
 - checking if you have pehkui installed, it's **important**
 - setting the game's version to be on 1.21
-### if you can't connect to the server (both in-game and in-app), try:
+### if you can't connect to the server (both in-game and in-app), or the logs say that the connection has timed out (e.g. `MqttException (0) - java.net.SocketTimeoutException: Connect timed out`), try:
 - setting the server to be different:
     in minecraft, set the server to be either `tcp://broker.hivemq.com:1883` or `tcp://eclipseprojects.io:1883` and hit refresh (others work too)
     in the app, set the server according to the one picked in minecraft, but without `tcp://` and `:1883` (e.g. `broker.hivemq.com`, `eclipseprojects.io`)
