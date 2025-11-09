@@ -1,4 +1,4 @@
 {
-  "MqttServer": "mqtt.eclipseprojects.io",
+  "MqttServer": "broker.emqx.io",
   "Nickname": "Actor-346590956"
 }

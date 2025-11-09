@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/host.csproj": {}
+    "/home/dsinkerii/Documents/Projects/messedup-settings/host/host.csproj": {}
   },
   "projects": {
-    "/mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/host.csproj": {
+    "/home/dsinkerii/Documents/Projects/messedup-settings/host/host.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/host.csproj",
+        "projectUniqueName": "/home/dsinkerii/Documents/Projects/messedup-settings/host/host.csproj",
         "projectName": "host",
-        "projectPath": "/mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/host.csproj",
+        "projectPath": "/home/dsinkerii/Documents/Projects/messedup-settings/host/host.csproj",
         "packagesPath": "/home/dsinkerii/.nuget/packages/",
-        "outputPath": "/mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/obj/",
+        "outputPath": "/home/dsinkerii/Documents/Projects/messedup-settings/host/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/dsinkerii/.nuget/NuGet/NuGet.Config"
@@ -20,7 +20,6 @@
           "net8.0"
         ],
         "sources": {
-          "/home/dsinkerii/.dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -39,7 +38,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -76,7 +75,7 @@
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.13, )",
+              "version": "[8.0.20, )",
               "autoReferenced": true
             }
           },
@@ -94,23 +93,19 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.13, 8.0.13]"
+              "version": "[8.0.20, 8.0.20]"
             },
             {
-              "name": "Microsoft.AspNetCore.App.Runtime.osx-x64",
-              "version": "[8.0.13, 8.0.13]"
+              "name": "Microsoft.AspNetCore.App.Runtime.osx-arm64",
+              "version": "[8.0.20, 8.0.20]"
             },
             {
-              "name": "Microsoft.NETCore.App.Host.osx-x64",
-              "version": "[8.0.13, 8.0.13]"
+              "name": "Microsoft.NETCore.App.Host.osx-arm64",
+              "version": "[8.0.20, 8.0.20]"
             },
             {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.13, 8.0.13]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Runtime.osx-x64",
-              "version": "[8.0.13, 8.0.13]"
+              "name": "Microsoft.NETCore.App.Runtime.osx-arm64",
+              "version": "[8.0.20, 8.0.20]"
             }
           ],
           "frameworkReferences": {
@@ -118,11 +113,11 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/home/dsinkerii/.dotnet/sdk/9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.110/PortableRuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
-        "osx-x64": {
+        "osx-arm64": {
           "#import": []
         }
       }

@@ -463,7 +463,7 @@
           "buildTransitive/net6.0/Microsoft.Extensions.Logging.Abstractions.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/8.0.13": {
+      "Microsoft.NET.ILLink.Tasks/8.0.20": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -673,7 +673,7 @@
         }
       }
     },
-    "net8.0/osx-x64": {
+    "net8.0/osx-arm64": {
       "Avalonia/11.0.10": {
         "type": "package",
         "dependencies": {
@@ -1083,7 +1083,7 @@
           "buildTransitive/net6.0/Microsoft.Extensions.Logging.Abstractions.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/8.0.13": {
+      "Microsoft.NET.ILLink.Tasks/8.0.20": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -1955,10 +1955,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.NET.ILLink.Tasks/8.0.13": {
-      "sha512": "R19ZTaRiQAK+xo9ZwaHbF/1vb1wwR1Wn5+sqp9v8+CDjbdS8R6qftKdw0VSXWKm7VAMi7P+NCU4zxDzhEWcAwQ==",
+    "Microsoft.NET.ILLink.Tasks/8.0.20": {
+      "sha512": "Rhcto2AjGvTO62+/VTmBpumBOmqIGp7nYEbTbmEXkCq4yPGxV8whju3/HsIA/bKyo2+DggaYk5+/8sxb1AbPTw==",
       "type": "package",
-      "path": "microsoft.net.illink.tasks/8.0.13",
+      "path": "microsoft.net.illink.tasks/8.0.20",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -1972,7 +1972,7 @@
         "build/Microsoft.NET.ILLink.Analyzers.props",
         "build/Microsoft.NET.ILLink.Tasks.props",
         "build/Microsoft.NET.ILLink.targets",
-        "microsoft.net.illink.tasks.8.0.13.nupkg.sha512",
+        "microsoft.net.illink.tasks.8.0.20.nupkg.sha512",
         "microsoft.net.illink.tasks.nuspec",
         "tools/net472/ILLink.Tasks.dll",
         "tools/net472/ILLink.Tasks.dll.config",
@@ -2483,7 +2483,7 @@
       "Avalonia.Themes.Fluent >= 11.0.10",
       "DialogHost.Avalonia >= 0.7.7",
       "HiveMQtt >= 0.14.0",
-      "Microsoft.NET.ILLink.Tasks >= 8.0.13"
+      "Microsoft.NET.ILLink.Tasks >= 8.0.20"
     ]
   },
   "packageFolders": {
@@ -2492,11 +2492,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/host.csproj",
+      "projectUniqueName": "/home/dsinkerii/Documents/Projects/messedup-settings/host/host.csproj",
       "projectName": "host",
-      "projectPath": "/mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/host.csproj",
+      "projectPath": "/home/dsinkerii/Documents/Projects/messedup-settings/host/host.csproj",
       "packagesPath": "/home/dsinkerii/.nuget/packages/",
-      "outputPath": "/mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/obj/",
+      "outputPath": "/home/dsinkerii/Documents/Projects/messedup-settings/host/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/dsinkerii/.nuget/NuGet/NuGet.Config"
@@ -2505,7 +2505,6 @@
         "net8.0"
       ],
       "sources": {
-        "/home/dsinkerii/.dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2524,7 +2523,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net8.0": {
@@ -2561,7 +2560,7 @@
           "Microsoft.NET.ILLink.Tasks": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[8.0.13, )",
+            "version": "[8.0.20, )",
             "autoReferenced": true
           }
         },
@@ -2579,23 +2578,19 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[8.0.13, 8.0.13]"
+            "version": "[8.0.20, 8.0.20]"
           },
           {
-            "name": "Microsoft.AspNetCore.App.Runtime.osx-x64",
-            "version": "[8.0.13, 8.0.13]"
+            "name": "Microsoft.AspNetCore.App.Runtime.osx-arm64",
+            "version": "[8.0.20, 8.0.20]"
           },
           {
-            "name": "Microsoft.NETCore.App.Host.osx-x64",
-            "version": "[8.0.13, 8.0.13]"
+            "name": "Microsoft.NETCore.App.Host.osx-arm64",
+            "version": "[8.0.20, 8.0.20]"
           },
           {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[8.0.13, 8.0.13]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Runtime.osx-x64",
-            "version": "[8.0.13, 8.0.13]"
+            "name": "Microsoft.NETCore.App.Runtime.osx-arm64",
+            "version": "[8.0.20, 8.0.20]"
           }
         ],
         "frameworkReferences": {
@@ -2603,11 +2598,11 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/home/dsinkerii/.dotnet/sdk/9.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.110/PortableRuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {
-      "osx-x64": {
+      "osx-arm64": {
         "#import": []
       }
     }

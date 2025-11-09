@@ -1,0 +1,5 @@
+/home/dsinkerii/Documents/Projects/messedup-settings/host/bin/Release/net8.0/osx-arm64/publish/host.pdb
+/home/dsinkerii/Documents/Projects/messedup-settings/host/bin/Release/net8.0/osx-arm64/publish/libAvaloniaNative.dylib
+/home/dsinkerii/Documents/Projects/messedup-settings/host/bin/Release/net8.0/osx-arm64/publish/libHarfBuzzSharp.dylib
+/home/dsinkerii/Documents/Projects/messedup-settings/host/bin/Release/net8.0/osx-arm64/publish/libSkiaSharp.dylib
+/home/dsinkerii/Documents/Projects/messedup-settings/host/bin/Release/net8.0/osx-arm64/publish/host

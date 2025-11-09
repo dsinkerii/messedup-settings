@@ -1,0 +1,2 @@
+/home/dsinkerii/Documents/Projects/messedup-settings/host/bin/Release/net8.0/win-x64/publish/host.pdb
+/home/dsinkerii/Documents/Projects/messedup-settings/host/bin/Release/net8.0/win-x64/publish/host.exe

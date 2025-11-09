@@ -1,0 +1,4 @@
+[*.cs]
+csharp_new_line_before_open_brace = accessors, anonymous_methods, anonymous_types, events, indexers,
+object_collection_array_initializers, properties, types
+dotnet_diagnostic.IDE0055.severity = suggestion

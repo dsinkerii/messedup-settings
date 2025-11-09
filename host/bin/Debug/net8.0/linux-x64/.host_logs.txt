@@ -1,13 +1,29 @@
-[23:49:57, frame 1] -- Log -- {
-      - Log message: "Update on /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/.appsettings.json"
+[15:47:27, frame 1] -- Log -- {
+      - Log message: "App launched, with such settings: actor: Actor-346590956; server: "
       - Log path:
 > at System.Environment.get_StackTrace()
--> at CustomLogger.LoggingTextWriter.WriteLine(String value) in /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/Views/Logger.cs:line 126
+-> at CustomLogger.LoggingTextWriter.WriteLine(String value) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Views/Logger.cs:line 126
 --> at System.IO.TextWriter.SyncTextWriter.WriteLine(String value)
 ---> at System.Console.WriteLine(String value)
-----> at Settings.UpdateSettings(AppSettings settings) in /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/Settings.cs:line 17
------> at Settings.SaveMqttNameSettings(String Server) in /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/Settings.cs:line 23
-------> at host.Views.MainWindow.OnTextBoxTextChanged(Object sender, RoutedEventArgs e) in /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/Views/MainWindow.axaml.cs:line 165
+----> at host.Views.MainWindow..ctor() in /home/dsinkerii/Documents/Projects/messedup-settings/host/Views/MainWindow.axaml.cs:line 73
+-----> at host.App.OnFrameworkInitializationCompleted() in /home/dsinkerii/Documents/Projects/messedup-settings/host/App.axaml.cs:line 20
+------> at Avalonia.AppBuilder.SetupUnsafe()
+-------> at Avalonia.AppBuilder.Setup()
+--------> at Avalonia.AppBuilder.SetupWithLifetime(IApplicationLifetime lifetime)
+---------> at Avalonia.ClassicDesktopStyleApplicationLifetimeExtensions.StartWithClassicDesktopLifetime(AppBuilder builder, String[] args, Action`1 lifetimeBuilder)
+----------> at host.Program.Main(String[] args) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Program.cs:line 13
+}
+
+[15:47:27, frame 2] -- Log -- {
+      - Log message: "Update on /home/dsinkerii/Documents/Projects/messedup-settings/host/.appsettings.json"
+      - Log path:
+> at System.Environment.get_StackTrace()
+-> at CustomLogger.LoggingTextWriter.WriteLine(String value) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Views/Logger.cs:line 126
+--> at System.IO.TextWriter.SyncTextWriter.WriteLine(String value)
+---> at System.Console.WriteLine(String value)
+----> at Settings.UpdateSettings(AppSettings settings) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Settings.cs:line 17
+-----> at Settings.SaveNickNameSettings(String Server) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Settings.cs:line 28
+------> at host.Views.MainWindow.OnTextBoxTextChanged(Object sender, RoutedEventArgs e) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Views/MainWindow.axaml.cs:line 264
 -------> at Avalonia.Interactivity.Interactive.<AddHandler>g__InvokeAdapter|4_0[TEventArgs](Delegate baseHandler, Object sender, RoutedEventArgs args)
 --------> at Avalonia.Interactivity.Interactive.<>c__4`1.<AddHandler>b__4_1(Delegate baseHandler, Object sender, RoutedEventArgs args)
 ---------> at Avalonia.Interactivity.EventRoute.RaiseEventImpl(RoutedEventArgs e)
@@ -18,51 +34,255 @@
 --------------> at Avalonia.Threading.DispatcherOperation.Execute()
 ---------------> at Avalonia.Threading.Dispatcher.ExecuteJob(DispatcherOperation job)
 ----------------> at Avalonia.Threading.Dispatcher.ExecuteJobsCore(Boolean fromExplicitBackgroundProcessingCallback)
------------------> at Avalonia.Threading.Dispatcher.OnOSTimer()
-------------------> at Avalonia.X11.X11PlatformThreading.RunLoop(CancellationToken cancellationToken)
--------------------> at Avalonia.Threading.DispatcherFrame.Run(IControlledDispatcherImpl impl)
---------------------> at Avalonia.Threading.Dispatcher.PushFrame(DispatcherFrame frame)
----------------------> at Avalonia.Threading.Dispatcher.MainLoop(CancellationToken cancellationToken)
-----------------------> at Avalonia.Controls.ApplicationLifetimes.ClassicDesktopStyleApplicationLifetime.Start(String[] args)
------------------------> at Avalonia.ClassicDesktopStyleApplicationLifetimeExtensions.StartWithClassicDesktopLifetime(AppBuilder builder, String[] args, Action`1 lifetimeBuilder)
-------------------------> at host.Program.Main(String[] args) in /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/Program.cs:line 13
+-----------------> at Avalonia.Threading.Dispatcher.Signaled()
+------------------> at Avalonia.X11.X11PlatformThreading.CheckSignaled()
+-------------------> at Avalonia.X11.X11PlatformThreading.RunLoop(CancellationToken cancellationToken)
+--------------------> at Avalonia.Threading.DispatcherFrame.Run(IControlledDispatcherImpl impl)
+---------------------> at Avalonia.Threading.Dispatcher.PushFrame(DispatcherFrame frame)
+----------------------> at Avalonia.Threading.Dispatcher.MainLoop(CancellationToken cancellationToken)
+-----------------------> at Avalonia.Controls.ApplicationLifetimes.ClassicDesktopStyleApplicationLifetime.Start(String[] args)
+------------------------> at Avalonia.ClassicDesktopStyleApplicationLifetimeExtensions.StartWithClassicDesktopLifetime(AppBuilder builder, String[] args, Action`1 lifetimeBuilder)
+-------------------------> at host.Program.Main(String[] args) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Program.cs:line 13
 }
 
-[23:49:57, frame 2] -- Log -- {
-      - Log message: "Update on /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/.appsettings.json"
+[15:47:28, frame 3] -- Log -- {
+      - Log message: "Connected result: ConnectResult[Code: Success]: SessionPresent: False, SessionExpiryInterval: 300, MaximumQoS: 2, RetainAvailable: True, TopicAliasMaximum: 65535, BrokerReceiveMaximum: 32..."
       - Log path:
 > at System.Environment.get_StackTrace()
--> at CustomLogger.LoggingTextWriter.WriteLine(String value) in /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/Views/Logger.cs:line 126
+-> at CustomLogger.LoggingTextWriter.WriteLine(String value) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Views/Logger.cs:line 126
 --> at System.IO.TextWriter.SyncTextWriter.WriteLine(String value)
 ---> at System.Console.WriteLine(String value)
-----> at Settings.UpdateSettings(AppSettings settings) in /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/Settings.cs:line 17
------> at Settings.SaveNickNameSettings(String Server) in /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/Settings.cs:line 28
-------> at host.Views.MainWindow.OnTextBoxTextChanged(Object sender, RoutedEventArgs e) in /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/Views/MainWindow.axaml.cs:line 167
--------> at Avalonia.Interactivity.Interactive.<AddHandler>g__InvokeAdapter|4_0[TEventArgs](Delegate baseHandler, Object sender, RoutedEventArgs args)
---------> at Avalonia.Interactivity.Interactive.<>c__4`1.<AddHandler>b__4_1(Delegate baseHandler, Object sender, RoutedEventArgs args)
----------> at Avalonia.Interactivity.EventRoute.RaiseEventImpl(RoutedEventArgs e)
-----------> at Avalonia.Interactivity.EventRoute.RaiseEvent(Interactive source, RoutedEventArgs e)
------------> at Avalonia.Interactivity.Interactive.RaiseEvent(RoutedEventArgs e)
-------------> at Avalonia.Controls.TextBox.<RaiseTextChangeEvents>b__217_0()
--------------> at Avalonia.Threading.DispatcherOperation.InvokeCore()
---------------> at Avalonia.Threading.DispatcherOperation.Execute()
----------------> at Avalonia.Threading.Dispatcher.ExecuteJob(DispatcherOperation job)
-----------------> at Avalonia.Threading.Dispatcher.ExecuteJobsCore(Boolean fromExplicitBackgroundProcessingCallback)
------------------> at Avalonia.Threading.Dispatcher.OnOSTimer()
-------------------> at Avalonia.X11.X11PlatformThreading.RunLoop(CancellationToken cancellationToken)
--------------------> at Avalonia.Threading.DispatcherFrame.Run(IControlledDispatcherImpl impl)
---------------------> at Avalonia.Threading.Dispatcher.PushFrame(DispatcherFrame frame)
----------------------> at Avalonia.Threading.Dispatcher.MainLoop(CancellationToken cancellationToken)
-----------------------> at Avalonia.Controls.ApplicationLifetimes.ClassicDesktopStyleApplicationLifetime.Start(String[] args)
------------------------> at Avalonia.ClassicDesktopStyleApplicationLifetimeExtensions.StartWithClassicDesktopLifetime(AppBuilder builder, String[] args, Action`1 lifetimeBuilder)
-------------------------> at host.Program.Main(String[] args) in /mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/Program.cs:line 13
+----> at host.Views.MainWindow.StartMqttConnection(String name) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Views/MainWindow.axaml.cs:line 104
+-----> at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+------> at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.AsyncStateMachineBox`1.MoveNext(Thread threadPoolThread)
+-------> at Avalonia.Threading.SendOrPostCallbackDispatcherOperation.InvokeCore()
+--------> at Avalonia.Threading.DispatcherOperation.Execute()
+---------> at Avalonia.Threading.Dispatcher.ExecuteJob(DispatcherOperation job)
+----------> at Avalonia.Threading.Dispatcher.ExecuteJobsCore(Boolean fromExplicitBackgroundProcessingCallback)
+-----------> at Avalonia.Threading.Dispatcher.Signaled()
+------------> at Avalonia.X11.X11PlatformThreading.CheckSignaled()
+-------------> at Avalonia.X11.X11PlatformThreading.RunLoop(CancellationToken cancellationToken)
+--------------> at Avalonia.Threading.DispatcherFrame.Run(IControlledDispatcherImpl impl)
+---------------> at Avalonia.Threading.Dispatcher.PushFrame(DispatcherFrame frame)
+----------------> at Avalonia.Threading.Dispatcher.MainLoop(CancellationToken cancellationToken)
+-----------------> at Avalonia.Controls.ApplicationLifetimes.ClassicDesktopStyleApplicationLifetime.Start(String[] args)
+------------------> at Avalonia.ClassicDesktopStyleApplicationLifetimeExtensions.StartWithClassicDesktopLifetime(AppBuilder builder, String[] args, Action`1 lifetimeBuilder)
+-------------------> at host.Program.Main(String[] args) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Program.cs:line 13
 }
 
-[23:49:58, frame 3] -- Log -- {
-      - Log message: "Connected result: ConnectResult[Code: Success]: SessionPresent: False, SessionExpiryInterval: 300, MaximumQoS: 2, RetainAvailable: True, TopicAliasMaximum: 10, BrokerReceiveMaximum: 20
-Subscribe options:HiveMQtt.Client.Options.SubscribeOptions
-Subscription result:HiveMQtt.Client.Results.SubscribeResult"
+[15:48:35, frame 4] -- Log -- {
+      - Log message: "Sending message..."
       - Log path:
-> No stack trace available.
+> at System.Environment.get_StackTrace()
+-> at CustomLogger.LoggingTextWriter.WriteLine(String value) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Views/Logger.cs:line 126
+--> at System.IO.TextWriter.SyncTextWriter.WriteLine(String value)
+---> at System.Console.WriteLine(String value)
+----> at host.Views.MainWindow.SendModifiedMqtt(Object sender, PointerReleasedEventArgs e) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Views/MainWindow.axaml.cs:line 148
+-----> at Avalonia.Interactivity.EventRoute.RaiseEventImpl(RoutedEventArgs e)
+------> at Avalonia.Interactivity.Interactive.RaiseEvent(RoutedEventArgs e)
+-------> at Avalonia.Input.MouseDevice.MouseUp(IMouseDevice device, UInt64 timestamp, IInputRoot root, Point p, PointerPointProperties props, KeyModifiers inputModifiers, IInputElement hitTest)
+--------> at Avalonia.Input.MouseDevice.ProcessRawEvent(RawPointerEventArgs e)
+---------> at Avalonia.ManualRawEventGrouperDispatchQueue.DispatchNext()
+----------> at Avalonia.X11.X11PlatformThreading.RunLoop(CancellationToken cancellationToken)
+-----------> at Avalonia.Threading.DispatcherFrame.Run(IControlledDispatcherImpl impl)
+------------> at Avalonia.Threading.Dispatcher.PushFrame(DispatcherFrame frame)
+-------------> at Avalonia.Threading.Dispatcher.MainLoop(CancellationToken cancellationToken)
+--------------> at Avalonia.Controls.ApplicationLifetimes.ClassicDesktopStyleApplicationLifetime.Start(String[] args)
+---------------> at Avalonia.ClassicDesktopStyleApplicationLifetimeExtensions.StartWithClassicDesktopLifetime(AppBuilder builder, String[] args, Action`1 lifetimeBuilder)
+----------------> at host.Program.Main(String[] args) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Program.cs:line 13
+}
+
+[15:48:35, frame 5] -- Log -- {
+      - Log message: "message content: Actor-346590956:fov:92 (encrypted: Pi1n2IwSDq2AlGHYPbqxCtCRFAXh1OUs+pE7kq1fzVc=)"
+      - Log path:
+> at System.Environment.get_StackTrace()
+-> at CustomLogger.LoggingTextWriter.WriteLine(String value) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Views/Logger.cs:line 126
+--> at System.IO.TextWriter.SyncTextWriter.WriteLine(String value)
+---> at System.Console.WriteLine(String value)
+----> at host.Views.MainWindow.SendMessage(String from, String content) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Views/MainWindow.axaml.cs:line 199
+-----> at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[TStateMachine](TStateMachine& stateMachine)
+------> at host.Views.MainWindow.SendMessage(String from, String content)
+-------> at host.Views.MainWindow.SendModifiedMqtt(Object sender, PointerReleasedEventArgs e) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Views/MainWindow.axaml.cs:line 152
+--------> at Avalonia.Interactivity.EventRoute.RaiseEventImpl(RoutedEventArgs e)
+---------> at Avalonia.Interactivity.Interactive.RaiseEvent(RoutedEventArgs e)
+----------> at Avalonia.Input.MouseDevice.MouseUp(IMouseDevice device, UInt64 timestamp, IInputRoot root, Point p, PointerPointProperties props, KeyModifiers inputModifiers, IInputElement hitTest)
+-----------> at Avalonia.Input.MouseDevice.ProcessRawEvent(RawPointerEventArgs e)
+------------> at Avalonia.ManualRawEventGrouperDispatchQueue.DispatchNext()
+-------------> at Avalonia.X11.X11PlatformThreading.RunLoop(CancellationToken cancellationToken)
+--------------> at Avalonia.Threading.DispatcherFrame.Run(IControlledDispatcherImpl impl)
+---------------> at Avalonia.Threading.Dispatcher.PushFrame(DispatcherFrame frame)
+----------------> at Avalonia.Threading.Dispatcher.MainLoop(CancellationToken cancellationToken)
+-----------------> at Avalonia.Controls.ApplicationLifetimes.ClassicDesktopStyleApplicationLifetime.Start(String[] args)
+------------------> at Avalonia.ClassicDesktopStyleApplicationLifetimeExtensions.StartWithClassicDesktopLifetime(AppBuilder builder, String[] args, Action`1 lifetimeBuilder)
+-------------------> at host.Program.Main(String[] args) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Program.cs:line 13
+}
+
+[15:48:35, frame 6] -- Log -- {
+      - Log message: "message status: 0"
+      - Log path:
+> at System.Environment.get_StackTrace()
+-> at CustomLogger.LoggingTextWriter.WriteLine(String value) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Views/Logger.cs:line 126
+--> at System.IO.TextWriter.SyncTextWriter.WriteLine(String value)
+---> at System.Console.WriteLine(String value)
+----> at host.Views.MainWindow.SendMessage(String from, String content) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Views/MainWindow.axaml.cs:line 200
+-----> at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[TStateMachine](TStateMachine& stateMachine)
+------> at host.Views.MainWindow.SendMessage(String from, String content)
+-------> at host.Views.MainWindow.SendModifiedMqtt(Object sender, PointerReleasedEventArgs e) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Views/MainWindow.axaml.cs:line 152
+--------> at Avalonia.Interactivity.EventRoute.RaiseEventImpl(RoutedEventArgs e)
+---------> at Avalonia.Interactivity.Interactive.RaiseEvent(RoutedEventArgs e)
+----------> at Avalonia.Input.MouseDevice.MouseUp(IMouseDevice device, UInt64 timestamp, IInputRoot root, Point p, PointerPointProperties props, KeyModifiers inputModifiers, IInputElement hitTest)
+-----------> at Avalonia.Input.MouseDevice.ProcessRawEvent(RawPointerEventArgs e)
+------------> at Avalonia.ManualRawEventGrouperDispatchQueue.DispatchNext()
+-------------> at Avalonia.X11.X11PlatformThreading.RunLoop(CancellationToken cancellationToken)
+--------------> at Avalonia.Threading.DispatcherFrame.Run(IControlledDispatcherImpl impl)
+---------------> at Avalonia.Threading.Dispatcher.PushFrame(DispatcherFrame frame)
+----------------> at Avalonia.Threading.Dispatcher.MainLoop(CancellationToken cancellationToken)
+-----------------> at Avalonia.Controls.ApplicationLifetimes.ClassicDesktopStyleApplicationLifetime.Start(String[] args)
+------------------> at Avalonia.ClassicDesktopStyleApplicationLifetimeExtensions.StartWithClassicDesktopLifetime(AppBuilder builder, String[] args, Action`1 lifetimeBuilder)
+-------------------> at host.Program.Main(String[] args) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Program.cs:line 13
+}
+
+[15:50:10, frame 7] -- Log -- {
+      - Log message: "Sending message..."
+      - Log path:
+> at System.Environment.get_StackTrace()
+-> at CustomLogger.LoggingTextWriter.WriteLine(String value) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Views/Logger.cs:line 126
+--> at System.IO.TextWriter.SyncTextWriter.WriteLine(String value)
+---> at System.Console.WriteLine(String value)
+----> at host.Views.MainWindow.SendModifiedMqtt(Object sender, PointerReleasedEventArgs e) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Views/MainWindow.axaml.cs:line 148
+-----> at Avalonia.Interactivity.EventRoute.RaiseEventImpl(RoutedEventArgs e)
+------> at Avalonia.Interactivity.Interactive.RaiseEvent(RoutedEventArgs e)
+-------> at Avalonia.Input.MouseDevice.MouseUp(IMouseDevice device, UInt64 timestamp, IInputRoot root, Point p, PointerPointProperties props, KeyModifiers inputModifiers, IInputElement hitTest)
+--------> at Avalonia.Input.MouseDevice.ProcessRawEvent(RawPointerEventArgs e)
+---------> at Avalonia.ManualRawEventGrouperDispatchQueue.DispatchNext()
+----------> at Avalonia.X11.X11PlatformThreading.RunLoop(CancellationToken cancellationToken)
+-----------> at Avalonia.Threading.DispatcherFrame.Run(IControlledDispatcherImpl impl)
+------------> at Avalonia.Threading.Dispatcher.PushFrame(DispatcherFrame frame)
+-------------> at Avalonia.Threading.Dispatcher.MainLoop(CancellationToken cancellationToken)
+--------------> at Avalonia.Controls.ApplicationLifetimes.ClassicDesktopStyleApplicationLifetime.Start(String[] args)
+---------------> at Avalonia.ClassicDesktopStyleApplicationLifetimeExtensions.StartWithClassicDesktopLifetime(AppBuilder builder, String[] args, Action`1 lifetimeBuilder)
+----------------> at host.Program.Main(String[] args) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Program.cs:line 13
+}
+
+[15:50:10, frame 8] -- Log -- {
+      - Log message: "message content: Actor-346590956:fov:62 (encrypted: Pi1n2IwSDq2AlGHYPbqxCv1e4fV6kpNHxZorg7t26lo=)"
+      - Log path:
+> at System.Environment.get_StackTrace()
+-> at CustomLogger.LoggingTextWriter.WriteLine(String value) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Views/Logger.cs:line 126
+--> at System.IO.TextWriter.SyncTextWriter.WriteLine(String value)
+---> at System.Console.WriteLine(String value)
+----> at host.Views.MainWindow.SendMessage(String from, String content) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Views/MainWindow.axaml.cs:line 199
+-----> at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[TStateMachine](TStateMachine& stateMachine)
+------> at host.Views.MainWindow.SendMessage(String from, String content)
+-------> at host.Views.MainWindow.SendModifiedMqtt(Object sender, PointerReleasedEventArgs e) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Views/MainWindow.axaml.cs:line 152
+--------> at Avalonia.Interactivity.EventRoute.RaiseEventImpl(RoutedEventArgs e)
+---------> at Avalonia.Interactivity.Interactive.RaiseEvent(RoutedEventArgs e)
+----------> at Avalonia.Input.MouseDevice.MouseUp(IMouseDevice device, UInt64 timestamp, IInputRoot root, Point p, PointerPointProperties props, KeyModifiers inputModifiers, IInputElement hitTest)
+-----------> at Avalonia.Input.MouseDevice.ProcessRawEvent(RawPointerEventArgs e)
+------------> at Avalonia.ManualRawEventGrouperDispatchQueue.DispatchNext()
+-------------> at Avalonia.X11.X11PlatformThreading.RunLoop(CancellationToken cancellationToken)
+--------------> at Avalonia.Threading.DispatcherFrame.Run(IControlledDispatcherImpl impl)
+---------------> at Avalonia.Threading.Dispatcher.PushFrame(DispatcherFrame frame)
+----------------> at Avalonia.Threading.Dispatcher.MainLoop(CancellationToken cancellationToken)
+-----------------> at Avalonia.Controls.ApplicationLifetimes.ClassicDesktopStyleApplicationLifetime.Start(String[] args)
+------------------> at Avalonia.ClassicDesktopStyleApplicationLifetimeExtensions.StartWithClassicDesktopLifetime(AppBuilder builder, String[] args, Action`1 lifetimeBuilder)
+-------------------> at host.Program.Main(String[] args) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Program.cs:line 13
+}
+
+[15:50:10, frame 9] -- Log -- {
+      - Log message: "message status: 0"
+      - Log path:
+> at System.Environment.get_StackTrace()
+-> at CustomLogger.LoggingTextWriter.WriteLine(String value) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Views/Logger.cs:line 126
+--> at System.IO.TextWriter.SyncTextWriter.WriteLine(String value)
+---> at System.Console.WriteLine(String value)
+----> at host.Views.MainWindow.SendMessage(String from, String content) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Views/MainWindow.axaml.cs:line 200
+-----> at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[TStateMachine](TStateMachine& stateMachine)
+------> at host.Views.MainWindow.SendMessage(String from, String content)
+-------> at host.Views.MainWindow.SendModifiedMqtt(Object sender, PointerReleasedEventArgs e) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Views/MainWindow.axaml.cs:line 152
+--------> at Avalonia.Interactivity.EventRoute.RaiseEventImpl(RoutedEventArgs e)
+---------> at Avalonia.Interactivity.Interactive.RaiseEvent(RoutedEventArgs e)
+----------> at Avalonia.Input.MouseDevice.MouseUp(IMouseDevice device, UInt64 timestamp, IInputRoot root, Point p, PointerPointProperties props, KeyModifiers inputModifiers, IInputElement hitTest)
+-----------> at Avalonia.Input.MouseDevice.ProcessRawEvent(RawPointerEventArgs e)
+------------> at Avalonia.ManualRawEventGrouperDispatchQueue.DispatchNext()
+-------------> at Avalonia.X11.X11PlatformThreading.RunLoop(CancellationToken cancellationToken)
+--------------> at Avalonia.Threading.DispatcherFrame.Run(IControlledDispatcherImpl impl)
+---------------> at Avalonia.Threading.Dispatcher.PushFrame(DispatcherFrame frame)
+----------------> at Avalonia.Threading.Dispatcher.MainLoop(CancellationToken cancellationToken)
+-----------------> at Avalonia.Controls.ApplicationLifetimes.ClassicDesktopStyleApplicationLifetime.Start(String[] args)
+------------------> at Avalonia.ClassicDesktopStyleApplicationLifetimeExtensions.StartWithClassicDesktopLifetime(AppBuilder builder, String[] args, Action`1 lifetimeBuilder)
+-------------------> at host.Program.Main(String[] args) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Program.cs:line 13
+}
+
+[15:50:11, frame 10] -- Log -- {
+      - Log message: "Sending message..."
+      - Log path:
+> at System.Environment.get_StackTrace()
+-> at CustomLogger.LoggingTextWriter.WriteLine(String value) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Views/Logger.cs:line 126
+--> at System.IO.TextWriter.SyncTextWriter.WriteLine(String value)
+---> at System.Console.WriteLine(String value)
+----> at host.Views.MainWindow.SendModifiedMqtt(Object sender, PointerReleasedEventArgs e) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Views/MainWindow.axaml.cs:line 148
+-----> at Avalonia.Interactivity.EventRoute.RaiseEventImpl(RoutedEventArgs e)
+------> at Avalonia.Interactivity.Interactive.RaiseEvent(RoutedEventArgs e)
+-------> at Avalonia.Input.MouseDevice.MouseUp(IMouseDevice device, UInt64 timestamp, IInputRoot root, Point p, PointerPointProperties props, KeyModifiers inputModifiers, IInputElement hitTest)
+--------> at Avalonia.Input.MouseDevice.ProcessRawEvent(RawPointerEventArgs e)
+---------> at Avalonia.ManualRawEventGrouperDispatchQueue.DispatchNext()
+----------> at Avalonia.X11.X11PlatformThreading.RunLoop(CancellationToken cancellationToken)
+-----------> at Avalonia.Threading.DispatcherFrame.Run(IControlledDispatcherImpl impl)
+------------> at Avalonia.Threading.Dispatcher.PushFrame(DispatcherFrame frame)
+-------------> at Avalonia.Threading.Dispatcher.MainLoop(CancellationToken cancellationToken)
+--------------> at Avalonia.Controls.ApplicationLifetimes.ClassicDesktopStyleApplicationLifetime.Start(String[] args)
+---------------> at Avalonia.ClassicDesktopStyleApplicationLifetimeExtensions.StartWithClassicDesktopLifetime(AppBuilder builder, String[] args, Action`1 lifetimeBuilder)
+----------------> at host.Program.Main(String[] args) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Program.cs:line 13
+}
+
+[15:50:11, frame 11] -- Log -- {
+      - Log message: "message content: Actor-346590956:fov:82 (encrypted: Pi1n2IwSDq2AlGHYPbqxChgb/POiKVePVarDLaLVyP8=)"
+      - Log path:
+> at System.Environment.get_StackTrace()
+-> at CustomLogger.LoggingTextWriter.WriteLine(String value) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Views/Logger.cs:line 126
+--> at System.IO.TextWriter.SyncTextWriter.WriteLine(String value)
+---> at System.Console.WriteLine(String value)
+----> at host.Views.MainWindow.SendMessage(String from, String content) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Views/MainWindow.axaml.cs:line 199
+-----> at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[TStateMachine](TStateMachine& stateMachine)
+------> at host.Views.MainWindow.SendMessage(String from, String content)
+-------> at host.Views.MainWindow.SendModifiedMqtt(Object sender, PointerReleasedEventArgs e) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Views/MainWindow.axaml.cs:line 152
+--------> at Avalonia.Interactivity.EventRoute.RaiseEventImpl(RoutedEventArgs e)
+---------> at Avalonia.Interactivity.Interactive.RaiseEvent(RoutedEventArgs e)
+----------> at Avalonia.Input.MouseDevice.MouseUp(IMouseDevice device, UInt64 timestamp, IInputRoot root, Point p, PointerPointProperties props, KeyModifiers inputModifiers, IInputElement hitTest)
+-----------> at Avalonia.Input.MouseDevice.ProcessRawEvent(RawPointerEventArgs e)
+------------> at Avalonia.ManualRawEventGrouperDispatchQueue.DispatchNext()
+-------------> at Avalonia.X11.X11PlatformThreading.RunLoop(CancellationToken cancellationToken)
+--------------> at Avalonia.Threading.DispatcherFrame.Run(IControlledDispatcherImpl impl)
+---------------> at Avalonia.Threading.Dispatcher.PushFrame(DispatcherFrame frame)
+----------------> at Avalonia.Threading.Dispatcher.MainLoop(CancellationToken cancellationToken)
+-----------------> at Avalonia.Controls.ApplicationLifetimes.ClassicDesktopStyleApplicationLifetime.Start(String[] args)
+------------------> at Avalonia.ClassicDesktopStyleApplicationLifetimeExtensions.StartWithClassicDesktopLifetime(AppBuilder builder, String[] args, Action`1 lifetimeBuilder)
+-------------------> at host.Program.Main(String[] args) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Program.cs:line 13
+}
+
+[15:50:11, frame 12] -- Log -- {
+      - Log message: "message status: 0"
+      - Log path:
+> at System.Environment.get_StackTrace()
+-> at CustomLogger.LoggingTextWriter.WriteLine(String value) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Views/Logger.cs:line 126
+--> at System.IO.TextWriter.SyncTextWriter.WriteLine(String value)
+---> at System.Console.WriteLine(String value)
+----> at host.Views.MainWindow.SendMessage(String from, String content) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Views/MainWindow.axaml.cs:line 200
+-----> at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[TStateMachine](TStateMachine& stateMachine)
+------> at host.Views.MainWindow.SendMessage(String from, String content)
+-------> at host.Views.MainWindow.SendModifiedMqtt(Object sender, PointerReleasedEventArgs e) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Views/MainWindow.axaml.cs:line 152
+--------> at Avalonia.Interactivity.EventRoute.RaiseEventImpl(RoutedEventArgs e)
+---------> at Avalonia.Interactivity.Interactive.RaiseEvent(RoutedEventArgs e)
+----------> at Avalonia.Input.MouseDevice.MouseUp(IMouseDevice device, UInt64 timestamp, IInputRoot root, Point p, PointerPointProperties props, KeyModifiers inputModifiers, IInputElement hitTest)
+-----------> at Avalonia.Input.MouseDevice.ProcessRawEvent(RawPointerEventArgs e)
+------------> at Avalonia.ManualRawEventGrouperDispatchQueue.DispatchNext()
+-------------> at Avalonia.X11.X11PlatformThreading.RunLoop(CancellationToken cancellationToken)
+--------------> at Avalonia.Threading.DispatcherFrame.Run(IControlledDispatcherImpl impl)
+---------------> at Avalonia.Threading.Dispatcher.PushFrame(DispatcherFrame frame)
+----------------> at Avalonia.Threading.Dispatcher.MainLoop(CancellationToken cancellationToken)
+-----------------> at Avalonia.Controls.ApplicationLifetimes.ClassicDesktopStyleApplicationLifetime.Start(String[] args)
+------------------> at Avalonia.ClassicDesktopStyleApplicationLifetimeExtensions.StartWithClassicDesktopLifetime(AppBuilder builder, String[] args, Action`1 lifetimeBuilder)
+-------------------> at host.Program.Main(String[] args) in /home/dsinkerii/Documents/Projects/messedup-settings/host/Program.cs:line 13
 }
 

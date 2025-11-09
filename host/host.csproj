@@ -6,16 +6,14 @@
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
-    <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
-
     <PublishSingleFile>true</PublishSingleFile>
     <SelfContained>true</SelfContained>
     <TrimMode>link</TrimMode>
-
     <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
-    <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
+    <ApplicationIcon>Assets/icon.ico</ApplicationIcon>
   </PropertyGroup>
-
+  <!-- note to self: -->
+  <!-- to compile do dotnet publish -c Release -r linux-x64 -\-self-contained -->
   <ItemGroup>
     <Folder Include="Models\" />
     <AvaloniaResource Include="Assets\**" />

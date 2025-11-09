@@ -1,11 +1,10 @@
 # messedup-settings
 https://youtu.be/qbOCx4pdUnQ
 
-# update 9:
-   also available on modrinth!
-
-   https://modrinth.com/mod/messed-up-settings
-  
+> also available on modrinth!
+> https://modrinth.com/mod/messed-up-settings
+# update 10:
+  i really hope this is the last update, the 1.5 update, since pehkui (for now, right now) dropped support since 1.21.1, no idea what happened, or if anything has happened, but the latest version right now is 1.21.1
 # ‼️ READ BEFORE INSTALLING ‼️
 
 ## [Here's](https://github.com/dsinkerii/messedup-settings/releases/latest) the latest version of the mod if you dont know how to use github
@@ -16,7 +15,7 @@ https://youtu.be/qbOCx4pdUnQ
 3. paste in your password and change your nickname if you want to, and enjoy!
 
 🔴 IF you are the one running the mod, allowing to change your settings, follow these steps:
-1. make sure you have 1.21 fabric installed.
+1. make sure you have 1.21.1 fabric installed.
 2. install [pehkui](https://www.curseforge.com/minecraft/mc-mods/pehkui/files/4821741) (additionally [slyde](https://modrinth.com/mod/slyde/version/1.7.1) and [libjf](https://modrinth.com/mod/libjf/version/3.10.0) to remove limits from options)
 3. after launching the mod, you can now copy the password (in the main menu) needed for your friends that will be editing your settings!
 
@@ -31,7 +30,7 @@ every time you reboot your game, your password changes, so in case it gets leake
   
   ❗ pehkui mod is now required!! download it at: https://www.curseforge.com/minecraft/mc-mods/pehkui/files/4821741
   
-  ❗ also, the mod is now a 1.2**1**.x fabric mod
+  ❗ also, the mod is now a 1.21 - 1.21.1 fabric mod
 
   ⭐ if you like this mod please hit that funny star button, i really appreciate that 
 
@@ -39,15 +38,15 @@ every time you reboot your game, your password changes, so in case it gets leake
 ### if your game doesn't launch, please try:
 - launching the game using a different launcher (prism launcher or the default launcher work the best)
 - checking if you have pehkui installed, it's **important**
-- setting the game's version to be on 1.21
+- setting the game's version to be on 1.21.1
 ### if you can't connect to the server (both in-game and in-app), or the logs say that the connection has timed out (e.g. `MqttException (0) - java.net.SocketTimeoutException: Connect timed out`), try:
 - setting the server to be different:
-    in minecraft, set the server to be either `tcp://broker.hivemq.com:1883` or `tcp://eclipseprojects.io:1883` and hit refresh (others work too)
-    in the app, set the server according to the one picked in minecraft, but without `tcp://` and `:1883` (e.g. `broker.hivemq.com`, `eclipseprojects.io`)
+    in minecraft, set the server to be either `broker.hivemq.com` or `broker.emqx.io` and hit refresh (others work too)
+    in the app, set the server to be the exact same
 - checking your firewall, you most likely have ports 1883/8883 blocked
 ### if you can't send requests to the mod through the app (or the other way around), try:
 - checking if you have the same server/password set
-- check if you're on the same version, latest is [1.4](https://github.com/dsinkerii/messedup-settings/releases/latest)
+- check if you're on the same version, latest is [1.5](https://github.com/dsinkerii/messedup-settings/releases/latest)
 
 ### if all fails, shoot me a dm on discord at @dsinkerii, and attach the logs from the app (found by clicking on the clipboard next to the title), and from minecraft (found at `.minecraft/logs/latest.log`)
 

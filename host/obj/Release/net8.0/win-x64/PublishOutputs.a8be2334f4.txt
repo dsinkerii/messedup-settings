@@ -1,2 +1,0 @@
-/mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/bin/Release/net8.0/win-x64/publish/host.pdb
-/mnt/e4524e8f-fd66-4961-8745-e302c41d1e6e/home/dsinkerii/projects/messedup/host/bin/Release/net8.0/win-x64/publish/host.exe
